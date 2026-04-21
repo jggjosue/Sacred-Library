@@ -41,7 +41,7 @@ const categories = [
 export function ContentBrowser() {
   return (
     <section id="explore" className="py-24 bg-background">
-      <div className="max-w-7xl mx-auto px-12">
+      <div className="max-w-7xl mx-auto px-12 md:px-20">
         <div className="text-center mb-16">
           <h2 className="text-4xl font-headline font-bold mb-4 text-foreground">Explore the Collection</h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
@@ -90,8 +90,8 @@ export function ContentBrowser() {
               </CarouselItem>
             ))}
           </CarouselContent>
-          <CarouselPrevious className="-left-6 h-12 w-12 bg-background/80 backdrop-blur-sm border-slate-200 dark:border-white/10 hover:bg-primary hover:text-white transition-all shadow-lg" />
-          <CarouselNext className="-right-6 h-12 w-12 bg-background/80 backdrop-blur-sm border-slate-200 dark:border-white/10 hover:bg-primary hover:text-white transition-all shadow-lg" />
+          <CarouselPrevious className="-left-8 md:-left-14 h-12 w-12 bg-background/80 backdrop-blur-sm border-slate-200 dark:border-white/10 hover:bg-primary hover:text-white transition-all shadow-lg" />
+          <CarouselNext className="-right-8 md:-right-14 h-12 w-12 bg-background/80 backdrop-blur-sm border-slate-200 dark:border-white/10 hover:bg-primary hover:text-white transition-all shadow-lg" />
         </Carousel>
       </div>
     </section>
