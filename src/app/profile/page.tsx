@@ -9,7 +9,7 @@ import { Footer } from '@/components/footer/footer';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
-import { BookMarked, History, Settings, User, Bell, Shield, Download } from 'lucide-react';
+import { BookMarked, History, Settings, User, Bell, Shield, Download, Layout } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { useI18n } from '@/components/providers/i18n-provider';
 
@@ -51,6 +51,13 @@ export default function ProfilePage() {
             <nav className="bg-white rounded-[2rem] border border-slate-100 overflow-hidden">
               <ProfileNavLink href="/profile" icon={User} label={t('profile.personalInfo')} active={pathname === '/profile'} />
               <ProfileNavLink href="/downloads" icon={Download} label={t('profile.downloads')} active={pathname === '/downloads'} />
+              <ProfileNavLink 
+                href="/studio" 
+                icon={Layout} 
+                label={t('studio.studio')} 
+                target="_blank" 
+                rel="noopener noreferrer" 
+              />
               <ProfileNavLink href="#" icon={Bell} label={t('profile.notifications')} />
               <ProfileNavLink href="#" icon={Shield} label={t('profile.security')} />
               <ProfileNavLink href="#" icon={Settings} label={t('profile.generalSettings')} />
@@ -110,9 +117,13 @@ export default function ProfilePage() {
   );
 }
 
-function ProfileNavLink({ icon: Icon, label, href, active = false }: any) {
+function ProfileNavLink({ icon: Icon, label, href, active = false, target, rel }: any) {
   return (
-    <Link href={href} className={cn(
+    <Link 
+      href={href} 
+      target={target}
+      rel={rel}
+      className={cn(
       "w-full flex items-center gap-4 px-8 py-5 text-sm font-bold transition-all border-l-4",
       active 
         ? "bg-blue-50 text-blue-600 border-blue-600" 

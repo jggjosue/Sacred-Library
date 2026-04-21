@@ -11,9 +11,10 @@ import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Progress } from '@/components/ui/progress';
-import { User, Bell, Shield, Settings, Download, Play, Trash2, X, ChevronDown } from 'lucide-react';
+import { User, Bell, Shield, Settings, Download, Play, Trash2, X, ChevronDown, Layout } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
+import { useI18n } from '@/components/providers/i18n-provider';
 
 const downloads = [
   {
@@ -58,6 +59,7 @@ const downloads = [
 
 export default function DownloadsPage() {
   const pathname = usePathname();
+  const { t } = useI18n();
 
   return (
     <div className="min-h-screen bg-slate-50/50">
@@ -77,25 +79,32 @@ export default function DownloadsPage() {
                   </Avatar>
                 </div>
                 <h2 className="text-3xl font-headline font-bold text-slate-900">John Doe</h2>
-                <p className="text-slate-400 font-medium mb-8">Sacred Library Member since 2024</p>
+                <p className="text-slate-400 font-medium mb-8">{t('profile.memberSince')} 2024</p>
                 
                 <div className="flex flex-col gap-3 px-4">
                   <Button className="w-full rounded-full bg-blue-600 hover:bg-blue-700 h-12 font-bold">
-                    Edit Profile
+                    {t('profile.editProfile')}
                   </Button>
                   <Button variant="outline" className="w-full rounded-full border-slate-100 h-12 font-bold text-slate-600">
-                    Sign Out
+                    {t('profile.signOut')}
                   </Button>
                 </div>
               </CardContent>
             </Card>
 
             <nav className="bg-white rounded-[2rem] border border-slate-100 overflow-hidden">
-              <ProfileNavLink href="/profile" icon={User} label="Personal Information" active={pathname === '/profile'} />
-              <ProfileNavLink href="/downloads" icon={Download} label="Downloads" active={pathname === '/downloads'} />
-              <ProfileNavLink href="#" icon={Bell} label="Notifications" />
-              <ProfileNavLink href="#" icon={Shield} label="Security & Privacy" />
-              <ProfileNavLink href="#" icon={Settings} label="General Settings" />
+              <ProfileNavLink href="/profile" icon={User} label={t('profile.personalInfo')} active={pathname === '/profile'} />
+              <ProfileNavLink href="/downloads" icon={Download} label={t('profile.downloads')} active={pathname === '/downloads'} />
+              <ProfileNavLink 
+                href="/studio" 
+                icon={Layout} 
+                label={t('studio.studio')} 
+                target="_blank" 
+                rel="noopener noreferrer" 
+              />
+              <ProfileNavLink href="#" icon={Bell} label={t('profile.notifications')} />
+              <ProfileNavLink href="#" icon={Shield} label={t('profile.security')} />
+              <ProfileNavLink href="#" icon={Settings} label={t('profile.generalSettings')} />
             </nav>
           </aside>
 
@@ -103,7 +112,7 @@ export default function DownloadsPage() {
           <section className="lg:col-span-8 space-y-12">
             <header className="flex flex-col md:flex-row justify-between items-start md:items-end gap-6">
               <div className="space-y-2">
-                <h1 className="text-5xl font-headline font-bold text-slate-900 tracking-tight">Downloads</h1>
+                <h1 className="text-5xl font-headline font-bold text-slate-900 tracking-tight">{t('profile.downloads')}</h1>
                 <p className="text-sm font-bold text-slate-400 uppercase tracking-widest">
                   {downloads.length} Items • 41.2 MB
                 </p>
@@ -183,9 +192,13 @@ export default function DownloadsPage() {
   );
 }
 
-function ProfileNavLink({ icon: Icon, label, href, active = false }: any) {
+function ProfileNavLink({ icon: Icon, label, href, active = false, target, rel }: any) {
   return (
-    <Link href={href} className={cn(
+    <Link 
+      href={href} 
+      target={target}
+      rel={rel}
+      className={cn(
       "w-full flex items-center gap-4 px-8 py-5 text-sm font-bold transition-all border-l-4",
       active 
         ? "bg-blue-50 text-blue-600 border-blue-600" 
