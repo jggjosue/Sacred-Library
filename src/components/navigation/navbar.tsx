@@ -1,13 +1,20 @@
+
 "use client";
 
 import React from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Heart, Moon, Sun, User } from 'lucide-react';
+import { Heart, Moon, Sun, User, ChevronDown, Download } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { AuthModal } from '@/components/auth/auth-modal';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { cn } from '@/lib/utils';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
 export function Navbar() {
   const [isAuthOpen, setIsAuthOpen] = React.useState(false);
@@ -42,7 +49,6 @@ export function Navbar() {
     { name: 'PLANS', href: '/plans' },
     { name: 'DEVOTIONS', href: '/devotions' },
     { name: 'STUDIO', href: '/studio' },
-    { name: 'PROFILE', href: '/profile' },
   ];
 
   return (
@@ -65,6 +71,29 @@ export function Navbar() {
               {link.name}
             </Link>
           ))}
+          
+          <DropdownMenu>
+            <DropdownMenuTrigger className={cn(
+              "flex items-center gap-1 text-[10px] font-bold tracking-[0.2em] transition-all relative py-2 outline-none",
+              (pathname === '/profile' || pathname === '/downloads') ? "text-primary border-b-2 border-primary" : "text-muted-foreground hover:text-primary"
+            )}>
+              PROFILE <ChevronDown className="w-3 h-3" />
+            </DropdownMenuTrigger>
+            <DropdownMenuContent className="rounded-2xl border-border bg-background shadow-xl p-2 min-w-[160px]">
+              <DropdownMenuItem asChild>
+                <Link href="/profile" className="flex items-center gap-2 px-4 py-3 text-[10px] font-bold tracking-widest text-muted-foreground hover:text-primary transition-colors cursor-pointer outline-none">
+                  <User className="w-4 h-4" />
+                  OVERVIEW
+                </Link>
+              </DropdownMenuItem>
+              <DropdownMenuItem asChild>
+                <Link href="/downloads" className="flex items-center gap-2 px-4 py-3 text-[10px] font-bold tracking-widest text-muted-foreground hover:text-primary transition-colors cursor-pointer outline-none">
+                  <Download className="w-4 h-4" />
+                  DOWNLOADS
+                </Link>
+              </DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
         </nav>
 
         <div className="flex items-center gap-6">

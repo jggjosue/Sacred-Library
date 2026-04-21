@@ -1,14 +1,20 @@
+
 "use client";
 
 import React from 'react';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { Navbar } from '@/components/navigation/navbar';
 import { Footer } from '@/components/footer/footer';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { BookMarked, History, Settings, User, Bell, Shield } from 'lucide-react';
+import { Card, CardContent } from '@/components/ui/card';
+import { BookMarked, History, Settings, User, Bell, Shield, Download } from 'lucide-react';
+import { cn } from '@/lib/utils';
 
 export default function ProfilePage() {
+  const pathname = usePathname();
+
   return (
     <div className="min-h-screen bg-slate-50/50">
       <Navbar />
@@ -41,10 +47,11 @@ export default function ProfilePage() {
             </Card>
 
             <nav className="bg-white rounded-[2rem] border border-slate-100 overflow-hidden">
-              <ProfileNavLink icon={User} label="Personal Information" active />
-              <ProfileNavLink icon={Bell} label="Notifications" />
-              <ProfileNavLink icon={Shield} label="Security & Privacy" />
-              <ProfileNavLink icon={Settings} label="General Settings" />
+              <ProfileNavLink href="/profile" icon={User} label="Personal Information" active={pathname === '/profile'} />
+              <ProfileNavLink href="/downloads" icon={Download} label="Downloads" active={pathname === '/downloads'} />
+              <ProfileNavLink href="#" icon={Bell} label="Notifications" />
+              <ProfileNavLink href="#" icon={Shield} label="Security & Privacy" />
+              <ProfileNavLink href="#" icon={Settings} label="General Settings" />
             </nav>
           </aside>
 
@@ -101,9 +108,9 @@ export default function ProfilePage() {
   );
 }
 
-function ProfileNavLink({ icon: Icon, label, active = false }: any) {
+function ProfileNavLink({ icon: Icon, label, href, active = false }: any) {
   return (
-    <button className={cn(
+    <Link href={href} className={cn(
       "w-full flex items-center gap-4 px-8 py-5 text-sm font-bold transition-all border-l-4",
       active 
         ? "bg-blue-50 text-blue-600 border-blue-600" 
@@ -111,7 +118,7 @@ function ProfileNavLink({ icon: Icon, label, active = false }: any) {
     )}>
       <Icon className="w-5 h-5" />
       {label}
-    </button>
+    </Link>
   );
 }
 
