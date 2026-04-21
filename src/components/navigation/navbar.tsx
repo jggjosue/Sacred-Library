@@ -4,7 +4,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { BookOpen, Settings, Heart, Moon, Sun } from 'lucide-react';
+import { BookOpen, Heart, Moon, Sun } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { AuthModal } from '@/components/auth/auth-modal';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
@@ -79,10 +79,6 @@ export function Navbar() {
 
             <Button variant="ghost" size="icon" className="text-primary hover:bg-primary/10 rounded-full">
               <BookOpen className="w-5 h-5 fill-current" />
-            </Button>
-            
-            <Button variant="ghost" size="icon" className="text-muted-foreground hover:text-primary rounded-full">
-              <Settings className="w-5 h-5" />
             </Button>
 
             <Button 
