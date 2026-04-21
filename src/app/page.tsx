@@ -53,7 +53,7 @@ export default function Home() {
             Step into the quiet halls of infinite wisdom. Explore, reflect, and grow in your spiritual journey.
           </p>
           
-          <div className="pt-12">
+          <div className="pt-24 pb-12">
             <a 
               href="#explore" 
               className="bg-accent text-white px-12 py-5 rounded-full font-bold text-lg hover:bg-accent/90 transition-all hover:scale-105 inline-block shadow-2xl shadow-accent/40 ring-4 ring-white/10"
