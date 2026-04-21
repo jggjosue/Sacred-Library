@@ -4,7 +4,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Library, Search, User, Menu } from 'lucide-react';
+import { Library, Search, User, Menu, Bookmark } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { AuthModal } from '@/components/auth/auth-modal';
 import { cn } from '@/lib/utils';
@@ -14,10 +14,11 @@ export function Navbar() {
   const pathname = usePathname();
 
   const navLinks = [
+    { name: 'Home', href: '/' },
     { name: 'Scripture', href: '/scripture' },
     { name: 'Devotionals', href: '#devotionals' },
+    { name: 'Plans', href: '#plans' },
     { name: 'Journal', href: '#journal' },
-    { name: 'Community', href: '#community' },
   ];
 
   return (
@@ -47,6 +48,11 @@ export function Navbar() {
         </div>
 
         <div className="flex items-center gap-4">
+          <Link href="/favorites">
+            <Button variant="ghost" size="icon" className={cn("text-slate-400 hover:text-blue-600", pathname === '/favorites' && "text-blue-600")}>
+              <Bookmark className="w-5 h-5" />
+            </Button>
+          </Link>
           <Button variant="ghost" size="icon" className="hidden sm:flex text-slate-400 hover:text-blue-600">
             <Search className="w-5 h-5" />
           </Button>
