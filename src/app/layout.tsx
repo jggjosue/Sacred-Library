@@ -4,7 +4,7 @@ import './globals.css';
 import {Toaster} from '@/components/ui/toaster';
 
 export const metadata: Metadata = {
-  title: 'Sacred Library | Divine Wisdom & Reflection',
+  title: 'Aura Sanctum | Divine Wisdom & Reflection',
   description: 'Your personal sanctuary for scripture, devotionals, and spiritual growth.',
 };
 
@@ -20,7 +20,7 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link href="https://fonts.googleapis.com/css2?family=Alegreya:wght@400;700&family=PT+Sans:wght@400;700&display=swap" rel="stylesheet" />
       </head>
-      <body className="font-body antialiased selection:bg-primary/20">
+      <body className="font-body antialiased selection:bg-blue-600/20">
         {children}
         <Toaster />
       </body>

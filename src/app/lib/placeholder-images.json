@@ -24,6 +24,12 @@
       "description": "A winding path through a beautiful forest.",
       "imageUrl": "https://picsum.photos/seed/plans/400/300",
       "imageHint": "forest path"
+    },
+    {
+      "id": "ancient-scroll",
+      "description": "Ancient manuscript texture for verse background.",
+      "imageUrl": "https://picsum.photos/seed/ancient-text/800/600",
+      "imageHint": "ancient manuscript"
     }
   ]
 }
