@@ -1,0 +1,29 @@
+
+{
+  "placeholderImages": [
+    {
+      "id": "hero-library",
+      "description": "A serene and majestic library with light streaming through windows.",
+      "imageUrl": "https://picsum.photos/seed/sacred-lib-hero/1200/600",
+      "imageHint": "majestic library"
+    },
+    {
+      "id": "scripture-cat",
+      "description": "Close up of an ancient manuscript.",
+      "imageUrl": "https://picsum.photos/seed/scripture/400/300",
+      "imageHint": "ancient manuscript"
+    },
+    {
+      "id": "devotional-cat",
+      "description": "A peaceful sunrise over a calm lake.",
+      "imageUrl": "https://picsum.photos/seed/devotion/400/300",
+      "imageHint": "peaceful sunrise"
+    },
+    {
+      "id": "plans-cat",
+      "description": "A winding path through a beautiful forest.",
+      "imageUrl": "https://picsum.photos/seed/plans/400/300",
+      "imageHint": "forest path"
+    }
+  ]
+}
