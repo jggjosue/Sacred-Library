@@ -4,7 +4,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Heart, Moon, Sun, Menu, Languages } from 'lucide-react';
+import { Heart, Moon, Sun, Menu, Languages, LogIn, UserPlus } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import { SignInButton, SignUpButton, UserButton, Show } from "@clerk/nextjs";
@@ -135,12 +135,14 @@ export function Navbar() {
                 <Show when="signed-out">
                   <div className="flex flex-col gap-2 pt-4">
                     <SignInButton mode="modal">
-                      <Button variant="outline" className="w-full font-bold uppercase tracking-widest text-xs h-12">
+                      <Button variant="outline" className="w-full font-bold uppercase tracking-widest text-xs h-12 gap-2">
+                        <LogIn className="w-4 h-4" />
                         {t.signIn}
                       </Button>
                     </SignInButton>
                     <SignUpButton mode="modal">
-                      <Button className="w-full bg-primary text-white font-bold uppercase tracking-widest text-xs h-12">
+                      <Button className="w-full bg-primary text-white font-bold uppercase tracking-widest text-xs h-12 gap-2">
+                        <UserPlus className="w-4 h-4" />
                         {t.signUp}
                       </Button>
                     </SignUpButton>
@@ -172,8 +174,8 @@ export function Navbar() {
           ))}
         </nav>
 
-        <div className="flex items-center gap-2 sm:gap-6">
-          <div className="flex items-center gap-1 sm:gap-2">
+        <div className="flex items-center gap-1 sm:gap-4">
+          <div className="flex items-center gap-1">
             <Link href="/favorites" className="hidden sm:inline-block">
               <Button variant="ghost" size="icon" className="text-muted-foreground hover:text-primary rounded-full">
                 <Heart className={cn("w-5 h-5", pathname === '/favorites' && "fill-primary text-primary")} />
@@ -206,17 +208,17 @@ export function Navbar() {
             </Button>
           </div>
           
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-1">
             <Show when="signed-out">
-              <div className="hidden sm:flex items-center gap-3">
+              <div className="flex items-center gap-1">
                 <SignInButton mode="modal">
-                  <Button variant="ghost" className="text-[10px] font-bold tracking-[0.2em] uppercase hover:text-primary h-10 px-4">
-                    {t.signIn}
+                  <Button variant="ghost" size="icon" title={t.signIn} className="text-muted-foreground hover:text-primary rounded-full">
+                    <LogIn className="w-5 h-5" />
                   </Button>
                 </SignInButton>
                 <SignUpButton mode="modal">
-                  <Button className="bg-primary text-white rounded-full px-6 h-10 font-bold text-[10px] tracking-[0.2em] uppercase shadow-lg shadow-primary/20">
-                    {t.signUp}
+                  <Button variant="ghost" size="icon" title={t.signUp} className="text-muted-foreground hover:text-primary rounded-full">
+                    <UserPlus className="w-5 h-5" />
                   </Button>
                 </SignUpButton>
               </div>
