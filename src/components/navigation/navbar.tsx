@@ -4,7 +4,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { BookOpen, Settings } from 'lucide-react';
+import { BookOpen, Settings, Heart, Moon, Sun } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { AuthModal } from '@/components/auth/auth-modal';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
@@ -12,6 +12,7 @@ import { cn } from '@/lib/utils';
 
 export function Navbar() {
   const [isAuthOpen, setIsAuthOpen] = React.useState(false);
+  const [isDark, setIsDark] = React.useState(false);
   const pathname = usePathname();
 
   const navLinks = [
@@ -46,12 +47,28 @@ export function Navbar() {
         </nav>
 
         <div className="flex items-center gap-6">
-          <div className="hidden sm:flex items-center gap-4">
+          <div className="hidden sm:flex items-center gap-2">
+            <Link href="/favorites">
+              <Button variant="ghost" size="icon" className="text-slate-400 hover:text-blue-600 rounded-full">
+                <Heart className={cn("w-5 h-5", pathname === '/favorites' && "fill-blue-600 text-blue-600")} />
+              </Button>
+            </Link>
+
             <Button variant="ghost" size="icon" className="text-blue-600 hover:bg-blue-50 rounded-full">
               <BookOpen className="w-5 h-5 fill-current" />
             </Button>
+            
             <Button variant="ghost" size="icon" className="text-slate-400 hover:text-blue-600 rounded-full">
               <Settings className="w-5 h-5" />
+            </Button>
+
+            <Button 
+              variant="ghost" 
+              size="icon" 
+              className="text-slate-400 hover:text-blue-600 rounded-full"
+              onClick={() => setIsDark(!isDark)}
+            >
+              {isDark ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
             </Button>
           </div>
           <Avatar className="w-8 h-8 cursor-pointer hover:opacity-80 transition-opacity">
