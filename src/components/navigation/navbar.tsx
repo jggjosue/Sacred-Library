@@ -15,6 +15,7 @@ export function Navbar() {
 
   const navLinks = [
     { name: 'SANCTUM', href: '/' },
+    { name: 'LIBRARY', href: '/library' },
     { name: 'SCRIPTURE', href: '/scripture' },
     { name: 'PLANS', href: '/plans' },
     { name: 'REFLECT', href: '/devotions' },
