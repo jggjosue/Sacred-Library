@@ -12,7 +12,7 @@ interface JournalSectionProps {
 }
 
 export function JournalSection({ dailyVerse }: JournalSectionProps) {
-  const [entry, setEntry] = React.useState('');
+  const [entry, setEntry] = React.useState('En este momento de quietud, reflexiono sobre la paz que sobrepasa todo entendimiento. La promesa de estar tranquilos y confiar en Su sabiduría me da fuerzas para afrontar el día con un corazón agradecido y lleno de esperanza.');
   const { toast } = useToast();
 
   const handleSave = () => {
@@ -45,6 +45,7 @@ export function JournalSection({ dailyVerse }: JournalSectionProps) {
               className="min-h-[400px] text-xl leading-relaxed resize-none p-8 rounded-[2rem] shadow-xl bg-card border-border text-foreground focus:ring-primary/20"
               value={entry}
               onChange={(e) => setEntry(e.target.value)}
+              disabled
             />
             <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
               <p className="text-sm text-muted-foreground italic">
