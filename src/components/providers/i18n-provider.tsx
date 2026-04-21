@@ -387,17 +387,14 @@ export function I18nProvider({ children }: { children: React.ReactNode }) {
     const savedLang = localStorage.getItem('lang') as Language;
     
     if (savedLang === 'en' || savedLang === 'es') {
-      setLangState(savedLang);
+      if (lang !== savedLang) setLangState(savedLang);
     } else {
       // Auto-detect browser language
       const browserLang = navigator.language.split('-')[0];
-      if (browserLang === 'es') {
-        setLangState('es');
-      } else {
-        setLangState('en');
-      }
+      const targetLang = browserLang === 'es' ? 'es' : 'en';
+      if (lang !== targetLang) setLangState(targetLang);
     }
-  }, []);
+  }, [lang]);
 
   const setLang = useCallback((newLang: Language) => {
     setLangState(newLang);
