@@ -21,6 +21,16 @@ export default function PlansPage() {
   const loveImage = PlaceHolderImages.find(img => img.id === 'topic-love');
   const recommendPeace = PlaceHolderImages.find(img => img.id === 'recommend-peace');
   const recommendFaith = PlaceHolderImages.find(img => img.id === 'recommend-faith');
+  const ancientScroll = PlaceHolderImages.find(img => img.id === 'ancient-scroll');
+  const scriptureCat = PlaceHolderImages.find(img => img.id === 'scripture-cat');
+
+  const availablePlans = [
+    { id: 'nt90', titleKey: 'plans.nt90.title', descKey: 'plans.nt90.desc', duration: '90', image: scriptureCat },
+    { id: 'proverbs', titleKey: 'plans.proverbs.title', descKey: 'plans.proverbs.desc', duration: '31', image: ancientScroll },
+    { id: 'psalms', titleKey: 'plans.psalms.title', descKey: 'plans.psalms.desc', duration: '150', image: recommendPeace },
+    { id: 'jesus', titleKey: 'plans.jesus.title', descKey: 'plans.jesus.desc', duration: '30', image: recommendFaith },
+    { id: 'anxiety', titleKey: 'plans.anxiety.title', descKey: 'plans.anxiety.desc', duration: '7', image: peaceImage },
+  ];
 
   return (
     <div className="min-h-screen bg-white">
@@ -44,7 +54,7 @@ export default function PlansPage() {
               <h2 className="text-4xl font-headline font-bold text-slate-900">{t('plans.myPlans')}</h2>
               
               <div className="space-y-6">
-                {/* Plan 1 */}
+                {/* Active Plan 1 */}
                 <div className="bg-white rounded-[2.5rem] p-10 border border-slate-50 shadow-2xl shadow-slate-100/50 flex flex-col md:flex-row items-center gap-8 group">
                   <div className="flex-1 space-y-6 w-full">
                     <div className="flex items-center gap-3">
@@ -56,8 +66,10 @@ export default function PlansPage() {
                       </span>
                     </div>
                     <div className="space-y-2">
-                      <h3 className="text-3xl font-headline font-bold text-slate-900 leading-tight">The Gospels in 30 Days</h3>
-                      <p className="text-sm text-slate-500">A journey through the life and teachings of Jesus.</p>
+                      <h3 className="text-3xl font-headline font-bold text-slate-900 leading-tight">
+                        {t('plans.jesus.title')}
+                      </h3>
+                      <p className="text-sm text-slate-500">{t('plans.jesus.desc')}</p>
                     </div>
                     <div className="space-y-4">
                       <Progress value={40} className="h-2 bg-slate-50" />
@@ -71,34 +83,6 @@ export default function PlansPage() {
                     {t('plans.continue')} <ArrowRight className="w-4 h-4 ml-2" />
                   </Button>
                 </div>
-
-                {/* Plan 2 */}
-                <div className="bg-white rounded-[2.5rem] p-10 border border-slate-50 shadow-2xl shadow-slate-100/50 flex flex-col md:flex-row items-center gap-8 group">
-                  <div className="flex-1 space-y-6 w-full">
-                    <div className="flex items-center gap-3">
-                      <Badge className="bg-blue-100 text-blue-600 hover:bg-blue-100 border-none font-bold text-[10px] tracking-widest uppercase px-3 py-1">
-                        {t('plans.active')}
-                      </Badge>
-                      <span className="text-[11px] font-bold text-slate-400 uppercase tracking-widest">
-                        {t('plans.dayOf')} 3 {t('plans.of')} 7
-                      </span>
-                    </div>
-                    <div className="space-y-2">
-                      <h3 className="text-3xl font-headline font-bold text-slate-900 leading-tight">Psalms of Praise</h3>
-                      <p className="text-sm text-slate-500">Finding joy and gratitude through the Psalms.</p>
-                    </div>
-                    <div className="space-y-4">
-                      <Progress value={42} className="h-2 bg-slate-50" />
-                      <div className="flex justify-between text-[10px] font-bold text-slate-400 tracking-widest uppercase">
-                        <span>42% {t('plans.completed')}</span>
-                        <span>4 {t('plans.left')}</span>
-                      </div>
-                    </div>
-                  </div>
-                  <Button variant="secondary" className="bg-slate-50 hover:bg-slate-100 text-slate-900 rounded-full px-10 h-14 font-bold text-sm transition-all hover:scale-105">
-                    {t('plans.continue')} <ArrowRight className="w-4 h-4 ml-2" />
-                  </Button>
-                </div>
               </div>
             </section>
 
@@ -106,39 +90,23 @@ export default function PlansPage() {
             <section className="space-y-8">
               <h2 className="text-4xl font-headline font-bold text-slate-900">{t('plans.recommended')}</h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                {/* Recommendation 1 */}
-                <div className="relative h-80 rounded-[3rem] overflow-hidden group cursor-pointer shadow-2xl transition-transform duration-500 hover:scale-[1.02]">
-                  <Image
-                    src={recommendPeace?.imageUrl || ''}
-                    alt="Finding Peace in Chaos"
-                    fill
-                    className="object-cover"
-                    data-ai-hint="misty sunset"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-                  <div className="absolute bottom-8 left-8 right-8 text-white space-y-3">
-                    <span className="text-[10px] font-bold tracking-[0.2em] opacity-80 uppercase">14 {t('plans.left').split(' ')[0]}</span>
-                    <h3 className="text-2xl font-headline font-bold leading-tight">Finding Peace in Chaos</h3>
-                    <p className="text-xs font-medium opacity-70 line-clamp-2 leading-relaxed">Daily readings to center your mind and find tranquility.</p>
+                {availablePlans.map((plan) => (
+                  <div key={plan.id} className="relative h-80 rounded-[3rem] overflow-hidden group cursor-pointer shadow-2xl transition-transform duration-500 hover:scale-[1.02]">
+                    <Image
+                      src={plan.image?.imageUrl || ''}
+                      alt={t(plan.titleKey)}
+                      fill
+                      className="object-cover"
+                      data-ai-hint={plan.image?.imageHint}
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+                    <div className="absolute bottom-8 left-8 right-8 text-white space-y-3">
+                      <span className="text-[10px] font-bold tracking-[0.2em] opacity-80 uppercase">{plan.duration} {t('plans.left').split(' ')[1]}</span>
+                      <h3 className="text-2xl font-headline font-bold leading-tight">{t(plan.titleKey)}</h3>
+                      <p className="text-xs font-medium opacity-70 line-clamp-2 leading-relaxed">{t(plan.descKey)}</p>
+                    </div>
                   </div>
-                </div>
-
-                {/* Recommendation 2 */}
-                <div className="relative h-80 rounded-[3rem] overflow-hidden group cursor-pointer shadow-2xl transition-transform duration-500 hover:scale-[1.02]">
-                  <Image
-                    src={recommendFaith?.imageUrl || ''}
-                    alt="Walking in Faith"
-                    fill
-                    className="object-cover"
-                    data-ai-hint="sunlight forest"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-                  <div className="absolute bottom-8 left-8 right-8 text-white space-y-3">
-                    <span className="text-[10px] font-bold tracking-[0.2em] opacity-80 uppercase">7 {t('plans.left').split(' ')[0]}</span>
-                    <h3 className="text-2xl font-headline font-bold leading-tight">Walking in Faith</h3>
-                    <p className="text-xs font-medium opacity-70 line-clamp-2 leading-relaxed">A short journey exploring the foundations of trust.</p>
-                  </div>
-                </div>
+                ))}
               </div>
             </section>
           </div>
