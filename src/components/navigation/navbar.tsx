@@ -21,6 +21,11 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 
 export function Navbar() {
   const [isDark, setIsDark] = React.useState(false);
@@ -70,6 +75,7 @@ export function Navbar() {
       language: 'Language',
       signIn: 'Sign In',
       signUp: 'Sign Up',
+      theme: 'Toggle Theme',
     },
     es: {
       bible: 'BIBLIA',
@@ -81,6 +87,7 @@ export function Navbar() {
       language: 'Idioma',
       signIn: 'Iniciar Sesión',
       signUp: 'Registrarse',
+      theme: 'Cambiar Tema',
     }
   };
 
@@ -200,52 +207,92 @@ export function Navbar() {
         <div className="flex items-center gap-1 sm:gap-4">
           <div className="flex items-center gap-1">
             <Show when="signed-in">
-              <Link href="/favorites" className="hidden sm:inline-block">
-                <Button variant="ghost" size="icon" className="text-muted-foreground hover:text-primary rounded-full">
-                  <Heart className={cn("w-5 h-5", pathname === '/favorites' && "fill-primary text-primary")} />
-                </Button>
-              </Link>
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <Link href="/favorites" className="hidden sm:inline-block">
+                    <Button variant="ghost" size="icon" className="text-muted-foreground hover:text-primary rounded-full">
+                      <Heart className={cn("w-5 h-5", pathname === '/favorites' && "fill-primary text-primary")} />
+                    </Button>
+                  </Link>
+                </TooltipTrigger>
+                <TooltipContent>
+                  <p className="text-[10px] font-bold uppercase tracking-widest">{t.favorites}</p>
+                </TooltipContent>
+              </Tooltip>
             </Show>
 
-            <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <Button variant="ghost" size="icon" className="text-muted-foreground hover:text-primary rounded-full">
-                  <Languages className="w-5 h-5" />
-                </Button>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent align="end" className="rounded-xl border-border bg-card">
-                <DropdownMenuItem onClick={() => handleLangChange('en')} className="font-bold text-[10px] tracking-widest uppercase cursor-pointer">
-                  English
-                </DropdownMenuItem>
-                <DropdownMenuItem onClick={() => handleLangChange('es')} className="font-bold text-[10px] tracking-widest uppercase cursor-pointer">
-                  Español
-                </DropdownMenuItem>
-              </DropdownMenuContent>
-            </DropdownMenu>
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <DropdownMenu>
+                  <DropdownMenuTrigger asChild>
+                    <Button variant="ghost" size="icon" className="text-muted-foreground hover:text-primary rounded-full">
+                      <Languages className="w-5 h-5" />
+                    </Button>
+                  </DropdownMenuTrigger>
+                  <DropdownMenuContent align="end" className="rounded-xl border-border bg-card">
+                    <DropdownMenuItem onClick={() => handleLangChange('en')} className="font-bold text-[10px] tracking-widest uppercase cursor-pointer">
+                      English
+                    </DropdownMenuItem>
+                    <DropdownMenuItem onClick={() => handleLangChange('es')} className="font-bold text-[10px] tracking-widest uppercase cursor-pointer">
+                      Español
+                    </DropdownMenuItem>
+                  </DropdownMenuContent>
+                </DropdownMenu>
+              </TooltipTrigger>
+              <TooltipContent>
+                <p className="text-[10px] font-bold uppercase tracking-widest">{t.language}</p>
+              </TooltipContent>
+            </Tooltip>
 
-            <Button 
-              variant="ghost" 
-              size="icon" 
-              className="text-muted-foreground hover:text-primary rounded-full"
-              onClick={toggleTheme}
-            >
-              {isDark ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
-            </Button>
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <Button 
+                  variant="ghost" 
+                  size="icon" 
+                  className="text-muted-foreground hover:text-primary rounded-full"
+                  onClick={toggleTheme}
+                >
+                  {isDark ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
+                </Button>
+              </TooltipTrigger>
+              <TooltipContent>
+                <p className="text-[10px] font-bold uppercase tracking-widest">{t.theme}</p>
+              </TooltipContent>
+            </Tooltip>
           </div>
           
           <div className="flex items-center gap-1">
             <Show when="signed-out">
               <div className="flex items-center gap-1">
-                <SignInButton mode="modal">
-                  <Button variant="ghost" size="icon" title={t.signIn} className="text-muted-foreground hover:text-primary rounded-full">
-                    <LogIn className="w-5 h-5" />
-                  </Button>
-                </SignInButton>
-                <SignUpButton mode="modal">
-                  <Button variant="ghost" size="icon" title={t.signUp} className="text-muted-foreground hover:text-primary rounded-full">
-                    <UserPlus className="w-5 h-5" />
-                  </Button>
-                </SignUpButton>
+                <Tooltip>
+                  <TooltipTrigger asChild>
+                    <div>
+                      <SignInButton mode="modal">
+                        <Button variant="ghost" size="icon" className="text-muted-foreground hover:text-primary rounded-full">
+                          <LogIn className="w-5 h-5" />
+                        </Button>
+                      </SignInButton>
+                    </div>
+                  </TooltipTrigger>
+                  <TooltipContent>
+                    <p className="text-[10px] font-bold uppercase tracking-widest">{t.signIn}</p>
+                  </TooltipContent>
+                </Tooltip>
+
+                <Tooltip>
+                  <TooltipTrigger asChild>
+                    <div>
+                      <SignUpButton mode="modal">
+                        <Button variant="ghost" size="icon" className="text-muted-foreground hover:text-primary rounded-full">
+                          <UserPlus className="w-5 h-5" />
+                        </Button>
+                      </SignUpButton>
+                    </div>
+                  </TooltipTrigger>
+                  <TooltipContent>
+                    <p className="text-[10px] font-bold uppercase tracking-widest">{t.signUp}</p>
+                  </TooltipContent>
+                </Tooltip>
               </div>
             </Show>
             <Show when="signed-in">
