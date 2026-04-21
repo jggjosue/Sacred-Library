@@ -26,6 +26,28 @@
     --ring: 212 77% 55%;
     --radius: 0.75rem;
   }
+
+  .dark {
+    --background: 212 80% 5%;
+    --foreground: 210 40% 98%;
+    --card: 212 80% 8%;
+    --card-foreground: 210 40% 98%;
+    --popover: 212 80% 8%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 212 77% 55%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 212 80% 12%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 212 80% 15%;
+    --muted-foreground: 212 20% 65%;
+    --accent: 188 68% 39%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 212 20% 20%;
+    --input: 212 20% 20%;
+    --ring: 212 77% 55%;
+  }
 }
 
 @layer base {
@@ -33,7 +55,7 @@
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground font-body;
+    @apply bg-background text-foreground font-body transition-colors duration-300;
   }
   h1, h2, h3, h4, h5, h6 {
     @apply font-headline;
