@@ -4,9 +4,10 @@
 import React from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Search, Bookmark } from 'lucide-react';
+import { Search, Bookmark, Settings, BookOpen } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { AuthModal } from '@/components/auth/auth-modal';
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { cn } from '@/lib/utils';
 
 export function Navbar() {
@@ -14,15 +15,13 @@ export function Navbar() {
   const pathname = usePathname();
 
   const navLinks = [
-    { name: 'SANCTUM', href: '/' },
-    { name: 'LIBRARY', href: '/library' },
-    { name: 'SCRIPTURE', href: '/scripture' },
+    { name: 'BIBLE', href: '/bible' },
     { name: 'PLANS', href: '/plans' },
-    { name: 'REFLECT', href: '/devotions' },
+    { name: 'DEVOTIONALS', href: '/library' },
   ];
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-white border-b border-slate-100">
       <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
         <Link href="/" className="flex items-center gap-2 group">
           <span className="font-headline text-2xl font-bold italic tracking-tight text-blue-600">Sacred Library</span>
@@ -35,7 +34,7 @@ export function Navbar() {
               href={link.href} 
               className={cn(
                 "text-[11px] font-bold tracking-[0.2em] transition-all relative py-2 text-slate-400 hover:text-blue-600",
-                pathname === link.href && "text-blue-600"
+                pathname === link.href && "text-blue-600 border-b-2 border-blue-600"
               )}
             >
               {link.name}
@@ -44,12 +43,16 @@ export function Navbar() {
         </nav>
 
         <div className="flex items-center gap-6">
-          <Button variant="ghost" size="icon" className="text-slate-400 hover:text-blue-600 rounded-full">
-            <Search className="w-5 h-5" />
-          </Button>
           <Button variant="ghost" size="icon" className="text-blue-600 hover:bg-blue-50 rounded-full">
-            <Bookmark className="w-5 h-5 fill-current" />
+            <BookOpen className="w-5 h-5 fill-current" />
           </Button>
+          <Button variant="ghost" size="icon" className="text-slate-400 hover:text-blue-600 rounded-full">
+            <Settings className="w-5 h-5" />
+          </Button>
+          <Avatar className="w-8 h-8 cursor-pointer hover:opacity-80 transition-opacity">
+            <AvatarImage src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=32&h=32&fit=crop" />
+            <AvatarFallback>U</AvatarFallback>
+          </Avatar>
         </div>
       </div>
       <AuthModal isOpen={isAuthOpen} onClose={() => setIsAuthOpen(false)} />
