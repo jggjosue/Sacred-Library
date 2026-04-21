@@ -44,7 +44,6 @@ export function Navbar() {
     { name: 'DEVOTIONS', href: '/devotions' },
     { name: 'LIBRARY', href: '/library' },
     { name: 'DOWNLOADS', href: '/downloads' },
-    { name: 'FAVORITES', href: '/favorites' },
   ];
 
   return (
