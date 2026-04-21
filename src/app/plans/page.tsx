@@ -11,31 +11,59 @@ import { Heart, ArrowRight } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 
-const categories = ["Verses", "Devotionals", "Plans"];
+const categories = ["All Plans", "Emotional Help", "Scripture Journey"];
 
-const favoritePlans = [
+const readingPlans = [
+  {
+    title: "Enfrentando la Ansiedad",
+    duration: "7-DAY PLAN",
+    progress: 0,
+    category: "Emotional Help",
+    image: PlaceHolderImages.find(img => img.id === 'plan-ansiedad'),
+  },
+  {
+    title: "Enfrentando la Depresión",
+    duration: "10-DAY PLAN",
+    progress: 0,
+    category: "Emotional Help",
+    image: PlaceHolderImages.find(img => img.id === 'plan-depresion'),
+  },
+  {
+    title: "Enfrentando el Miedo",
+    duration: "5-DAY PLAN",
+    progress: 20,
+    category: "Emotional Help",
+    image: PlaceHolderImages.find(img => img.id === 'plan-miedo'),
+  },
+  {
+    title: "Enfrentando el Duelo",
+    duration: "15-DAY PLAN",
+    progress: 0,
+    category: "Emotional Help",
+    image: PlaceHolderImages.find(img => img.id === 'plan-duelo'),
+  },
+  {
+    title: "Enfrentando la Soledad",
+    duration: "7-DAY PLAN",
+    progress: 0,
+    category: "Emotional Help",
+    image: PlaceHolderImages.find(img => img.id === 'plan-soledad'),
+  },
   {
     title: "Journey Through Psalms",
     duration: "30-DAY PLAN",
     progress: 40,
+    category: "Scripture Journey",
     image: PlaceHolderImages.find(img => img.id === 'plan-mountains'),
-  },
-  {
-    title: "Finding Peace in Chaos",
-    duration: "14-DAY PLAN",
-    progress: 85,
-    image: PlaceHolderImages.find(img => img.id === 'plan-sunset'),
-  },
-  {
-    title: "Wisdom of Proverbs",
-    duration: "7-DAY PLAN",
-    progress: 15,
-    image: PlaceHolderImages.find(img => img.id === 'plan-forest'),
   }
 ];
 
 export default function PlansPage() {
-  const [activeCategory, setActiveCategory] = React.useState("Plans");
+  const [activeCategory, setActiveCategory] = React.useState("All Plans");
+
+  const filteredPlans = readingPlans.filter(plan => 
+    activeCategory === "All Plans" || plan.category === activeCategory
+  );
 
   return (
     <div className="min-h-screen bg-white">
@@ -43,9 +71,17 @@ export default function PlansPage() {
       
       <main className="max-w-7xl mx-auto px-6 pt-32 pb-24">
         <header className="mb-16 space-y-10">
-          <h1 className="text-5xl md:text-6xl font-headline font-bold text-slate-900 tracking-tight">
-            Your Favorite Plans
-          </h1>
+          <div className="space-y-4">
+            <span className="text-[10px] font-bold tracking-[0.3em] text-blue-600 uppercase">
+              RECURSOS ESPIRITUALES
+            </span>
+            <h1 className="text-5xl md:text-7xl font-headline font-bold text-slate-900 tracking-tight">
+              Planes de Lectura
+            </h1>
+            <p className="text-lg text-slate-500 max-w-2xl font-body">
+              Encuentra consuelo y guía a través de la Palabra de Dios en cada circunstancia de la vida.
+            </p>
+          </div>
 
           <div className="flex flex-wrap gap-4">
             {categories.map((cat) => (
@@ -66,10 +102,11 @@ export default function PlansPage() {
         </header>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-          {favoritePlans.map((plan, idx) => (
+          {filteredPlans.map((plan, idx) => (
             <div 
               key={idx} 
-              className="group bg-white rounded-[3rem] overflow-hidden shadow-2xl shadow-slate-200/50 border border-slate-50 flex flex-col transition-all duration-500 hover:scale-[1.02]"
+              className="group bg-white rounded-[3rem] overflow-hidden shadow-2xl shadow-slate-200/50 border border-slate-50 flex flex-col transition-all duration-500 hover:scale-[1.02] animate-in fade-in slide-in-from-bottom-4"
+              style={{ animationDelay: `${idx * 100}ms` }}
             >
               {/* Image Section */}
               <div className="relative h-72 overflow-hidden">
@@ -84,7 +121,7 @@ export default function PlansPage() {
                 
                 <div className="absolute top-6 right-6">
                   <button className="bg-white/20 backdrop-blur-md p-2.5 rounded-full text-white hover:bg-white/40 transition-colors">
-                    <Heart className="w-5 h-5 fill-current" />
+                    <Heart className="w-5 h-5" />
                   </button>
                 </div>
 
@@ -102,14 +139,14 @@ export default function PlansPage() {
               <div className="p-8 space-y-8 flex-1 flex flex-col justify-between">
                 <div className="space-y-4">
                   <div className="flex justify-between items-center text-[10px] font-bold tracking-widest uppercase">
-                    <span className="text-slate-400">Progress</span>
+                    <span className="text-slate-400">Progreso</span>
                     <span className="text-blue-600">{plan.progress}%</span>
                   </div>
                   <Progress value={plan.progress} className="h-2 bg-slate-50" />
                 </div>
 
                 <Button className="w-full bg-blue-600 hover:bg-blue-700 text-white rounded-full py-7 h-auto text-sm font-bold shadow-lg shadow-blue-200 group-hover:shadow-blue-300 transition-all">
-                  Continue Plan
+                  {plan.progress > 0 ? "Continuar Plan" : "Iniciar Plan"}
                   <ArrowRight className="w-4 h-4 ml-2 transition-transform group-hover:translate-x-1" />
                 </Button>
               </div>

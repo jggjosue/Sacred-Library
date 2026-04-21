@@ -32,22 +32,40 @@
       "imageHint": "ancient manuscript"
     },
     {
+      "id": "plan-ansiedad",
+      "description": "Calm ocean at dawn.",
+      "imageUrl": "https://picsum.photos/seed/calm-ocean/600/400",
+      "imageHint": "calm ocean"
+    },
+    {
+      "id": "plan-depresion",
+      "description": "Light breaking through dark clouds.",
+      "imageUrl": "https://picsum.photos/seed/light-clouds/600/400",
+      "imageHint": "light clouds"
+    },
+    {
+      "id": "plan-miedo",
+      "description": "A lighthouse in the distance.",
+      "imageUrl": "https://picsum.photos/seed/lighthouse/600/400",
+      "imageHint": "lighthouse"
+    },
+    {
+      "id": "plan-duelo",
+      "description": "A quiet meadow in the morning.",
+      "imageUrl": "https://picsum.photos/seed/quiet-meadow/600/400",
+      "imageHint": "quiet meadow"
+    },
+    {
+      "id": "plan-soledad",
+      "description": "A single tree on a golden hill.",
+      "imageUrl": "https://picsum.photos/seed/lonely-tree/600/400",
+      "imageHint": "lonely tree"
+    },
+    {
       "id": "plan-mountains",
       "description": "Majestic mountains for the Psalms plan.",
       "imageUrl": "https://picsum.photos/seed/mountains-plan/600/400",
       "imageHint": "majestic mountains"
-    },
-    {
-      "id": "plan-sunset",
-      "description": "Peaceful sunset on a beach for the Peace plan.",
-      "imageUrl": "https://picsum.photos/seed/sunset-beach/600/400",
-      "imageHint": "sunset beach"
-    },
-    {
-      "id": "plan-forest",
-      "description": "Sunlight through forest trees for the Proverbs plan.",
-      "imageUrl": "https://picsum.photos/seed/forest-sun/600/400",
-      "imageHint": "forest sunlight"
     },
     {
       "id": "library-morning",
@@ -66,24 +84,6 @@
       "description": "Sunlight filtering through a dense pine forest.",
       "imageUrl": "https://picsum.photos/seed/forest-audio/1200/500",
       "imageHint": "forest sunlight"
-    },
-    {
-      "id": "genesis-card",
-      "description": "A beautiful sunset over misty mountains.",
-      "imageUrl": "https://picsum.photos/seed/genesis/400/300",
-      "imageHint": "misty mountains"
-    },
-    {
-      "id": "proverbs-card",
-      "description": "An open bible lit by a single candle in the dark.",
-      "imageUrl": "https://picsum.photos/seed/proverbs/400/300",
-      "imageHint": "candle bible"
-    },
-    {
-      "id": "john-card",
-      "description": "Calm ocean horizon at sunset.",
-      "imageUrl": "https://picsum.photos/seed/john/400/300",
-      "imageHint": "ocean horizon"
     }
   ]
 }
