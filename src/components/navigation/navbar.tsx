@@ -25,6 +25,7 @@ import {
 import {
   Tooltip,
   TooltipContent,
+  TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 
@@ -115,13 +116,13 @@ export function Navbar() {
 
                 <Show when="signed-out">
                   <div className="flex flex-col gap-2 pt-4">
-                    <SignInButton mode="modal">
+                    <SignInButton mode="modal" forceRedirectUrl="/profile">
                       <Button variant="outline" className="w-full font-bold uppercase tracking-widest text-xs h-12 gap-2">
                         <LogIn className="w-4 h-4" />
                         {t('nav.signIn')}
                       </Button>
                     </SignInButton>
-                    <SignUpButton mode="modal">
+                    <SignUpButton mode="modal" forceRedirectUrl="/profile">
                       <Button className="w-full bg-primary text-white font-bold uppercase tracking-widest text-xs h-12 gap-2">
                         <UserPlus className="w-4 h-4" />
                         {t('nav.signUp')}
@@ -229,7 +230,7 @@ export function Navbar() {
                 <Tooltip>
                   <TooltipTrigger asChild>
                     <div>
-                      <SignInButton mode="modal">
+                      <SignInButton mode="modal" forceRedirectUrl="/profile">
                         <Button variant="ghost" size="icon" className="text-muted-foreground hover:text-primary rounded-full">
                           <LogIn className="w-5 h-5" />
                         </Button>
@@ -244,7 +245,7 @@ export function Navbar() {
                 <Tooltip>
                   <TooltipTrigger asChild>
                     <div>
-                      <SignUpButton mode="modal">
+                      <SignUpButton mode="modal" forceRedirectUrl="/profile">
                         <Button variant="ghost" size="icon" className="text-muted-foreground hover:text-primary rounded-full">
                           <UserPlus className="w-5 h-5" />
                         </Button>
