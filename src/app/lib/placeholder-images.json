@@ -30,6 +30,24 @@
       "description": "Ancient manuscript texture for verse background.",
       "imageUrl": "https://picsum.photos/seed/ancient-text/800/600",
       "imageHint": "ancient manuscript"
+    },
+    {
+      "id": "plan-mountains",
+      "description": "Majestic mountains for the Psalms plan.",
+      "imageUrl": "https://picsum.photos/seed/mountains-plan/600/400",
+      "imageHint": "majestic mountains"
+    },
+    {
+      "id": "plan-sunset",
+      "description": "Peaceful sunset on a beach for the Peace plan.",
+      "imageUrl": "https://picsum.photos/seed/sunset-beach/600/400",
+      "imageHint": "sunset beach"
+    },
+    {
+      "id": "plan-forest",
+      "description": "Sunlight through forest trees for the Proverbs plan.",
+      "imageUrl": "https://picsum.photos/seed/forest-sun/600/400",
+      "imageHint": "forest sunlight"
     }
   ]
 }

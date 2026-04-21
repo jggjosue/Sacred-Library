@@ -1,32 +1,30 @@
 
 "use client";
 
-import { Library, Github, Twitter, Instagram } from 'lucide-react';
 import Link from 'next/link';
 
 export function Footer() {
   return (
-    <footer className="bg-white border-t py-12 px-4 mt-24">
-      <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
-        <div className="flex items-center gap-2 group">
-          <span className="font-headline text-xl font-bold text-blue-600">Aura Sanctum</span>
-        </div>
+    <footer className="bg-slate-50/50 py-20 px-6 mt-auto">
+      <div className="max-w-7xl mx-auto">
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-12">
+          <div className="space-y-4">
+            <h2 className="font-headline text-2xl font-bold italic text-slate-900 leading-tight">
+              Aura <br /> Sanctum
+            </h2>
+          </div>
 
-        <nav className="flex gap-8 text-sm text-muted-foreground">
-          <Link href="#" className="hover:text-blue-600 transition-colors">Privacy Policy</Link>
-          <Link href="#" className="hover:text-blue-600 transition-colors">Terms of Service</Link>
-          <Link href="#" className="hover:text-blue-600 transition-colors">Support</Link>
-          <Link href="#" className="hover:text-blue-600 transition-colors">Contact</Link>
-        </nav>
-
-        <div className="flex gap-4">
-          <button className="text-muted-foreground hover:text-blue-600 transition-colors"><Twitter className="w-5 h-5" /></button>
-          <button className="text-muted-foreground hover:text-blue-600 transition-colors"><Instagram className="w-5 h-5" /></button>
-          <button className="text-muted-foreground hover:text-blue-600 transition-colors"><Github className="w-5 h-5" /></button>
+          <nav className="flex flex-wrap gap-x-10 gap-y-4 text-[10px] font-bold tracking-[0.2em] text-slate-400 uppercase">
+            <Link href="#" className="hover:text-blue-600 transition-colors">Privacy Policy</Link>
+            <Link href="#" className="hover:text-blue-600 transition-colors">Terms of Service</Link>
+            <Link href="#" className="hover:text-blue-600 transition-colors">Guided Path</Link>
+            <Link href="#" className="hover:text-blue-600 transition-colors">Contact Support</Link>
+          </nav>
         </div>
-      </div>
-      <div className="max-w-7xl mx-auto mt-8 pt-8 border-t text-center text-xs text-muted-foreground">
-        &copy; {new Date().getFullYear()} Aura Sanctum. All rights reserved. Built for peace and reflection.
+        
+        <div className="mt-16 pt-8 border-t border-slate-200 flex flex-col md:flex-row justify-between items-center gap-4 text-[10px] font-medium text-slate-400 tracking-wider">
+          <p>© {new Date().getFullYear()} AURA SANCTUM. A SPACE FOR QUIET DEVOTION AND INTENTIONAL GROWTH.</p>
+        </div>
       </div>
     </footer>
   );
