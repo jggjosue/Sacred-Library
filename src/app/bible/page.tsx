@@ -67,21 +67,6 @@ export default function BiblePage() {
             Now the earth was formless and empty, darkness was over the surface of the deep, and the Spirit of God was hovering over the waters.
           </p>
 
-          {/* AI Insight Box */}
-          <div className="my-12 p-10 bg-blue-50/50 rounded-[2.5rem] space-y-6 relative overflow-hidden group">
-            <div className="flex items-center gap-3 text-blue-600">
-              <Sparkles className="w-4 h-4 fill-current" />
-              <span className="text-[10px] font-bold tracking-[0.2em] uppercase">INSIGHT</span>
-            </div>
-            <p className="text-sm text-slate-600 leading-relaxed italic">
-              The Hebrew word used here for "hovering" (merachephet) evokes the image of a mother bird fluttering over her young. It suggests a protective, life-giving presence preparing to bring order out of chaos.
-            </p>
-            <Button className="bg-blue-600 hover:bg-blue-700 text-white rounded-full px-8 h-12 text-xs font-bold gap-2 shadow-lg shadow-blue-100 transition-all hover:scale-105">
-              <Sparkles className="w-4 h-4" />
-              Generate AI Image
-            </Button>
-          </div>
-
           <p className="relative">
             <span className="text-slate-300 text-sm font-bold absolute -left-8 top-1">3</span>
             And God said, "Let there be light," and there was light.
