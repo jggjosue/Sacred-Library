@@ -3,6 +3,7 @@
 
 import React from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import { Navbar } from '@/components/navigation/navbar';
 import { Footer } from '@/components/footer/footer';
 import { Button } from '@/components/ui/button';
@@ -14,6 +15,7 @@ const filters = ["Verses", "Devotionals", "Plans"];
 
 const libraryItems = [
   {
+    id: 'morning-gratitude',
     title: 'Morning Gratitude',
     author: 'BY SARAH YOUNG',
     quote: '"Find peace in the quiet moments before the day begins. Let your heart be filled with gratitude for the breath in your lungs and the light breaking over the horizon..."',
@@ -21,6 +23,7 @@ const libraryItems = [
     active: true,
   },
   {
+    id: 'finding-stillness',
     title: 'Finding Stillness',
     author: 'BY JOHN MARK COMER',
     quote: '"In a world addicted to noise, stillness is an act of rebellion. It is in the quiet spaces that we finally hear the whispers of grace that guide our steps..."',
@@ -39,7 +42,7 @@ export default function LibraryPage() {
       <main className="max-w-7xl mx-auto px-6 pt-32 pb-24">
         <header className="mb-16 space-y-10">
           <h1 className="text-6xl font-headline font-bold text-slate-900 tracking-tight">
-            Your Favorites
+            Library
           </h1>
 
           <div className="flex flex-wrap gap-4">
@@ -91,17 +94,19 @@ export default function LibraryPage() {
                 </p>
 
                 <div className="pt-6">
-                  <Button 
-                    className={cn(
-                      "w-full rounded-full py-8 text-sm font-bold transition-all duration-300",
-                      item.active 
-                        ? "bg-blue-600 hover:bg-blue-700 text-white shadow-lg shadow-blue-200" 
-                        : "bg-slate-50 hover:bg-slate-100 text-slate-900 shadow-none"
-                    )}
-                  >
-                    Read Now
-                    <ArrowRight className="w-4 h-4 ml-2" />
-                  </Button>
+                  <Link href={`/library/${item.id}`}>
+                    <Button 
+                      className={cn(
+                        "w-full rounded-full py-8 text-sm font-bold transition-all duration-300",
+                        item.active 
+                          ? "bg-blue-600 hover:bg-blue-700 text-white shadow-lg shadow-blue-200" 
+                          : "bg-slate-50 hover:bg-slate-100 text-slate-900 shadow-none"
+                      )}
+                    >
+                      Read Now
+                      <ArrowRight className="w-4 h-4 ml-2" />
+                    </Button>
+                  </Link>
                 </div>
               </div>
             </div>
