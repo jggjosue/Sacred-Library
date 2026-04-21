@@ -4,10 +4,16 @@
 import React from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Heart, Moon, Sun } from 'lucide-react';
+import { Heart, Moon, Sun, ChevronDown } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { AuthModal } from '@/components/auth/auth-modal';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 import { cn } from '@/lib/utils';
 
 export function Navbar() {
@@ -16,7 +22,6 @@ export function Navbar() {
   const pathname = usePathname();
 
   React.useEffect(() => {
-    // Check local storage for theme preference or system preference
     const savedTheme = localStorage.getItem('theme');
     const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
     
@@ -40,10 +45,13 @@ export function Navbar() {
 
   const navLinks = [
     { name: 'BIBLE', href: '/bible' },
+    { name: 'DOWNLOADS', href: '/downloads' },
+  ];
+
+  const librarySubmenu = [
+    { name: 'OVERVIEW', href: '/library' },
     { name: 'PLANS', href: '/plans' },
     { name: 'DEVOTIONS', href: '/devotions' },
-    { name: 'LIBRARY', href: '/library' },
-    { name: 'DOWNLOADS', href: '/downloads' },
   ];
 
   return (
@@ -66,6 +74,25 @@ export function Navbar() {
               {link.name}
             </Link>
           ))}
+
+          <DropdownMenu>
+            <DropdownMenuTrigger className={cn(
+              "flex items-center gap-1 text-[10px] font-bold tracking-[0.2em] transition-all py-2 text-muted-foreground hover:text-primary outline-none",
+              (pathname === '/library' || pathname === '/plans' || pathname === '/devotions') && "text-primary"
+            )}>
+              LIBRARY
+              <ChevronDown className="w-3 h-3" />
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="start" className="bg-background border-border rounded-xl shadow-xl min-w-[180px] p-2">
+              {librarySubmenu.map((sub) => (
+                <DropdownMenuItem key={sub.name} asChild className="focus:bg-primary/5 focus:text-primary rounded-lg cursor-pointer">
+                  <Link href={sub.href} className="w-full px-3 py-2 text-[10px] font-bold tracking-widest uppercase">
+                    {sub.name}
+                  </Link>
+                </DropdownMenuItem>
+              ))}
+            </DropdownMenuContent>
+          </DropdownMenu>
         </nav>
 
         <div className="flex items-center gap-6">
