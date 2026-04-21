@@ -86,12 +86,11 @@ export function Navbar() {
 
   const t = translations[lang];
 
-  const navLinks = [
+  const publicLinks = [
     { name: t.bible, href: '/bible' },
     { name: t.plans, href: '/plans' },
     { name: lang === 'es' ? t.devocionales : t.devotions, href: '/devotions' },
     { name: t.library, href: '/library' },
-    { name: t.dashboard, href: '/studio', isExternal: true },
   ];
 
   return (
@@ -109,12 +108,10 @@ export function Navbar() {
                 <SheetTitle className="text-left font-headline text-2xl text-primary">Sacred Library</SheetTitle>
               </SheetHeader>
               <nav className="flex flex-col gap-4 mt-8">
-                {navLinks.map((link) => (
+                {publicLinks.map((link) => (
                   <Link 
                     key={link.name}
                     href={link.href}
-                    target={link.isExternal ? "_blank" : undefined}
-                    rel={link.isExternal ? "noopener noreferrer" : undefined}
                     className={cn(
                       "text-sm font-bold tracking-[0.2em] py-3 border-b border-border text-muted-foreground hover:text-primary",
                       pathname === link.href && "text-primary"
@@ -123,15 +120,30 @@ export function Navbar() {
                     {link.name}
                   </Link>
                 ))}
-                <Link 
-                  href="/favorites"
-                  className={cn(
-                    "text-sm font-bold tracking-[0.2em] py-3 border-b border-border text-muted-foreground hover:text-primary",
-                    pathname === '/favorites' && "text-primary"
-                  )}
-                >
-                  {t.favorites}
-                </Link>
+                
+                <Show when="signed-in">
+                  <Link 
+                    href="/studio"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={cn(
+                      "text-sm font-bold tracking-[0.2em] py-3 border-b border-border text-muted-foreground hover:text-primary",
+                      pathname === '/studio' && "text-primary"
+                    )}
+                  >
+                    {t.dashboard}
+                  </Link>
+                  <Link 
+                    href="/favorites"
+                    className={cn(
+                      "text-sm font-bold tracking-[0.2em] py-3 border-b border-border text-muted-foreground hover:text-primary",
+                      pathname === '/favorites' && "text-primary"
+                    )}
+                  >
+                    {t.favorites}
+                  </Link>
+                </Show>
+
                 <Show when="signed-out">
                   <div className="flex flex-col gap-2 pt-4">
                     <SignInButton mode="modal">
@@ -158,12 +170,10 @@ export function Navbar() {
         </div>
         
         <nav className="hidden lg:flex items-center gap-6">
-          {navLinks.map((link) => (
+          {publicLinks.map((link) => (
             <Link 
               key={link.name}
               href={link.href}
-              target={link.isExternal ? "_blank" : undefined}
-              rel={link.isExternal ? "noopener noreferrer" : undefined}
               className={cn(
                 "text-[10px] font-bold tracking-[0.2em] transition-all relative py-2 text-muted-foreground hover:text-primary",
                 pathname === link.href && "text-primary border-b-2 border-primary"
@@ -172,15 +182,30 @@ export function Navbar() {
               {link.name}
             </Link>
           ))}
+          <Show when="signed-in">
+            <Link 
+              href="/studio"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={cn(
+                "text-[10px] font-bold tracking-[0.2em] transition-all relative py-2 text-muted-foreground hover:text-primary",
+                pathname === '/studio' && "text-primary border-b-2 border-primary"
+              )}
+            >
+              {t.dashboard}
+            </Link>
+          </Show>
         </nav>
 
         <div className="flex items-center gap-1 sm:gap-4">
           <div className="flex items-center gap-1">
-            <Link href="/favorites" className="hidden sm:inline-block">
-              <Button variant="ghost" size="icon" className="text-muted-foreground hover:text-primary rounded-full">
-                <Heart className={cn("w-5 h-5", pathname === '/favorites' && "fill-primary text-primary")} />
-              </Button>
-            </Link>
+            <Show when="signed-in">
+              <Link href="/favorites" className="hidden sm:inline-block">
+                <Button variant="ghost" size="icon" className="text-muted-foreground hover:text-primary rounded-full">
+                  <Heart className={cn("w-5 h-5", pathname === '/favorites' && "fill-primary text-primary")} />
+                </Button>
+              </Link>
+            </Show>
 
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
