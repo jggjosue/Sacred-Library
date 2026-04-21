@@ -108,6 +108,96 @@
       "description": "A simple wooden cross on a hill.",
       "imageUrl": "https://picsum.photos/seed/john-cross/400/400",
       "imageHint": "wooden cross"
+    },
+    {
+      "id": "inspiration-1",
+      "description": "Starry night sky over a quiet field.",
+      "imageUrl": "https://picsum.photos/seed/insp-1/800/600",
+      "imageHint": "starry sky"
+    },
+    {
+      "id": "inspiration-2",
+      "description": "Dew drops on a leaf at sunrise.",
+      "imageUrl": "https://picsum.photos/seed/insp-2/800/600",
+      "imageHint": "dew drops"
+    },
+    {
+      "id": "inspiration-3",
+      "description": "A lone tree on a hill during autumn.",
+      "imageUrl": "https://picsum.photos/seed/insp-3/800/600",
+      "imageHint": "autumn tree"
+    },
+    {
+      "id": "inspiration-4",
+      "description": "Soft light filtering through stained glass.",
+      "imageUrl": "https://picsum.photos/seed/insp-4/800/600",
+      "imageHint": "stained glass"
+    },
+    {
+      "id": "inspiration-5",
+      "description": "A peaceful meadow filled with wildflowers.",
+      "imageUrl": "https://picsum.photos/seed/insp-5/800/600",
+      "imageHint": "flower meadow"
+    },
+    {
+      "id": "inspiration-6",
+      "description": "Clouds reflecting in a still mountain lake.",
+      "imageUrl": "https://picsum.photos/seed/insp-6/800/600",
+      "imageHint": "mountain lake"
+    },
+    {
+      "id": "inspiration-7",
+      "description": "A path leading towards a bright horizon.",
+      "imageUrl": "https://picsum.photos/seed/insp-7/800/600",
+      "imageHint": "bright horizon"
+    },
+    {
+      "id": "inspiration-8",
+      "description": "A candle burning in a dark room.",
+      "imageUrl": "https://picsum.photos/seed/insp-8/800/600",
+      "imageHint": "burning candle"
+    },
+    {
+      "id": "inspiration-9",
+      "description": "Snow falling softly on a quiet forest.",
+      "imageUrl": "https://picsum.photos/seed/insp-9/800/600",
+      "imageHint": "falling snow"
+    },
+    {
+      "id": "inspiration-10",
+      "description": "A bird soaring high above the clouds.",
+      "imageUrl": "https://picsum.photos/seed/insp-10/800/600",
+      "imageHint": "soaring bird"
+    },
+    {
+      "id": "inspiration-11",
+      "description": "A calm stream flowing over smooth stones.",
+      "imageUrl": "https://picsum.photos/seed/insp-11/800/600",
+      "imageHint": "calm stream"
+    },
+    {
+      "id": "inspiration-12",
+      "description": "Sunlight warming a quiet reading nook.",
+      "imageUrl": "https://picsum.photos/seed/insp-12/800/600",
+      "imageHint": "reading nook"
+    },
+    {
+      "id": "inspiration-13",
+      "description": "A rainbow appearing after a summer rain.",
+      "imageUrl": "https://picsum.photos/seed/insp-13/800/600",
+      "imageHint": "rainbow rain"
+    },
+    {
+      "id": "inspiration-14",
+      "description": "An old stone bridge over a quiet river.",
+      "imageUrl": "https://picsum.photos/seed/insp-14/800/600",
+      "imageHint": "stone bridge"
+    },
+    {
+      "id": "inspiration-15",
+      "description": "A lighthouse guiding ships at dusk.",
+      "imageUrl": "https://picsum.photos/seed/insp-15/800/600",
+      "imageHint": "lighthouse dusk"
     }
   ]
 }

@@ -9,6 +9,7 @@ import { JournalSection } from '@/components/journal/journal-section';
 import { Footer } from '@/components/footer/footer';
 import { InterestsPicker } from '@/components/personalization/interests-picker';
 import { DiscoverPath } from '@/components/content/discover-path';
+import { InspirationCarousel } from '@/components/content/inspiration-carousel';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { Quote } from 'lucide-react';
 
@@ -22,7 +23,7 @@ export default function Home() {
       <Navbar />
       
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-24 pb-12">
         {heroImage?.imageUrl && (
           <Image
             src={heroImage.imageUrl}
@@ -53,7 +54,7 @@ export default function Home() {
             Step into the quiet halls of infinite wisdom. Explore, reflect, and grow in your spiritual journey.
           </p>
           
-          <div className="pt-8">
+          <div className="pt-24 pb-12">
             <a 
               href="#explore" 
               className="bg-accent text-white px-10 py-4 md:px-12 md:py-5 rounded-full font-bold text-lg hover:bg-accent/90 transition-all hover:scale-105 inline-block shadow-2xl shadow-accent/40 ring-4 ring-white/10"
@@ -66,6 +67,9 @@ export default function Home() {
 
       {/* Content Browsing Section */}
       <ContentBrowser />
+
+      {/* Inspiration Carousel Section */}
+      <InspirationCarousel />
 
       {/* Journaling Section */}
       <JournalSection dailyVerse={DAILY_VERSE} />
