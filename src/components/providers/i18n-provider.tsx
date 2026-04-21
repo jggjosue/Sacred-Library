@@ -297,8 +297,17 @@ export function I18nProvider({ children }: { children: React.ReactNode }) {
 
   useEffect(() => {
     const savedLang = localStorage.getItem('lang') as Language;
+    
     if (savedLang === 'en' || savedLang === 'es') {
       setLangState(savedLang);
+    } else {
+      // Auto-detect browser language
+      const browserLang = navigator.language.split('-')[0];
+      if (browserLang === 'es') {
+        setLangState('es');
+      } else {
+        setLangState('en');
+      }
     }
   }, []);
 
