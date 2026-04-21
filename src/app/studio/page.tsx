@@ -2,6 +2,7 @@
 
 import React from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import { 
   Layout, 
   Monitor, 
@@ -14,7 +15,8 @@ import {
   Settings,
   Cloud,
   Download,
-  Plus
+  Plus,
+  User
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Slider } from '@/components/ui/slider';
@@ -70,6 +72,9 @@ export default function StudioPage() {
           <div className="flex flex-col gap-6 items-center">
             <SidebarIcon icon={HelpCircle} label="Help" small />
             <SidebarIcon icon={MessageSquare} label="Feedback" small />
+            <Link href="/profile" className="w-full">
+              <SidebarIcon icon={User} label="Profile" small />
+            </Link>
           </div>
         </aside>
 
