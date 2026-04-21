@@ -23,7 +23,7 @@ export default function Home() {
       <Navbar />
       
       {/* Static Hero Section */}
-      <section className="relative h-[90vh] w-full flex items-center justify-center overflow-hidden">
+      <section className="relative min-h-[100vh] w-full flex items-center justify-center overflow-hidden">
         {heroImage?.imageUrl && (
           <Image
             src={heroImage.imageUrl}
@@ -37,7 +37,7 @@ export default function Home() {
         <div className="absolute inset-0 bg-primary/40 dark:bg-black/60 mix-blend-multiply" />
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-background/10 to-background" />
         
-        <div className="relative z-10 max-w-4xl mx-auto px-6 text-center text-white space-y-8 animate-in fade-in zoom-in duration-700">
+        <div className="relative z-10 max-w-4xl mx-auto px-6 pt-32 pb-32 text-center text-white space-y-12 animate-in fade-in zoom-in duration-700">
           <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md px-4 py-2 rounded-full border border-white/20">
             <span className="w-2 h-2 bg-accent rounded-full animate-pulse" />
             <span className="text-sm font-medium tracking-wide uppercase">Daily Wisdom</span>
@@ -54,7 +54,7 @@ export default function Home() {
             Step into the quiet halls of infinite wisdom. Explore, reflect, and grow in your spiritual journey.
           </p>
           
-          <div className="pt-24 pb-12">
+          <div className="pt-12">
             <a 
               href="#explore" 
               className="bg-accent text-white px-10 py-4 md:px-12 md:py-5 rounded-full font-bold text-lg hover:bg-accent/90 transition-all hover:scale-105 inline-block shadow-2xl shadow-accent/40 ring-4 ring-white/10"
