@@ -1,4 +1,3 @@
-
 "use client";
 
 import React from 'react';
@@ -45,13 +44,14 @@ export function Navbar() {
 
   const navLinks = [
     { name: 'BIBLE', href: '/bible' },
+    { name: 'PLANS', href: '/plans' },
+    { name: 'DEVOTIONS', href: '/devotions' },
     { name: 'DOWNLOADS', href: '/downloads' },
   ];
 
   const librarySubmenu = [
     { name: 'OVERVIEW', href: '/library' },
-    { name: 'PLANS', href: '/plans' },
-    { name: 'DEVOTIONS', href: '/devotions' },
+    { name: 'FAVORITES', href: '/favorites' },
   ];
 
   return (
@@ -78,7 +78,7 @@ export function Navbar() {
           <DropdownMenu>
             <DropdownMenuTrigger className={cn(
               "flex items-center gap-1 text-[10px] font-bold tracking-[0.2em] transition-all py-2 text-muted-foreground hover:text-primary outline-none",
-              (pathname === '/library' || pathname === '/plans' || pathname === '/devotions') && "text-primary"
+              pathname === '/library' && "text-primary"
             )}>
               LIBRARY
               <ChevronDown className="w-3 h-3" />
