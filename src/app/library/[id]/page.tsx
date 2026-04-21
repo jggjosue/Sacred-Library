@@ -4,10 +4,11 @@
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { Navbar } from '@/components/navigation/navbar';
 import { Footer } from '@/components/footer/footer';
 import { Button } from '@/components/ui/button';
 import { Slider } from '@/components/ui/slider';
-import { Bookmark, Share2, Play, Pause, Settings, ChevronLeft } from 'lucide-react';
+import { Bookmark, Share2, Play, Pause, Settings } from 'lucide-react';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 
 export default function DevotionalDetailPage() {
@@ -16,23 +17,7 @@ export default function DevotionalDetailPage() {
 
   return (
     <div className="min-h-screen bg-slate-50/30 flex flex-col">
-      {/* Reading Navbar */}
-      <header className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-slate-100">
-        <div className="max-w-5xl mx-auto px-6 h-20 flex items-center justify-between">
-          <Link href="/library" className="flex items-center gap-2 group text-slate-900">
-            <span className="font-headline text-2xl font-bold tracking-tight">Sacred Library</span>
-          </Link>
-          
-          <div className="flex items-center gap-4">
-            <Button variant="ghost" size="icon" className="text-slate-400 hover:text-blue-600">
-              <Bookmark className="w-5 h-5" />
-            </Button>
-            <Button variant="ghost" size="icon" className="text-slate-400 hover:text-blue-600">
-              <Share2 className="w-5 h-5" />
-            </Button>
-          </div>
-        </div>
-      </header>
+      <Navbar />
 
       <main className="flex-1 pt-32 pb-48">
         <article className="max-w-4xl mx-auto px-6">
