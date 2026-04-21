@@ -3,7 +3,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Heart, Moon, Sun } from 'lucide-react';
+import { Heart, Moon, Sun, User } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { AuthModal } from '@/components/auth/auth-modal';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
@@ -41,7 +41,8 @@ export function Navbar() {
     { name: 'BIBLE', href: '/bible' },
     { name: 'PLANS', href: '/plans' },
     { name: 'DEVOTIONS', href: '/devotions' },
-    { name: 'DOWNLOADS', href: '/downloads' },
+    { name: 'STUDIO', href: '/studio' },
+    { name: 'PROFILE', href: '/profile' },
   ];
 
   return (
@@ -51,7 +52,7 @@ export function Navbar() {
           <span className="font-headline text-2xl font-bold tracking-tight text-primary">Sacred Library</span>
         </Link>
         
-        <nav className="hidden lg:flex items-center gap-8">
+        <nav className="hidden lg:flex items-center gap-6">
           {navLinks.map((link) => (
             <Link 
               key={link.name}
