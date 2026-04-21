@@ -60,13 +60,6 @@ export function JournalSection({ dailyVerse }: JournalSectionProps) {
               </Button>
             </div>
           </div>
-
-          <div className="pt-12 text-center">
-            <div className="inline-block p-6 bg-muted/30 rounded-2xl border border-dashed border-border">
-              <h4 className="font-bold text-xs text-muted-foreground uppercase tracking-[0.2em] mb-1">Community Circles</h4>
-              <p className="text-xs text-muted-foreground">Coming Soon: Connect and share with others in the Library.</p>
-            </div>
-          </div>
         </div>
       </div>
     </section>
