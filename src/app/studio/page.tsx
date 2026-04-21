@@ -11,10 +11,8 @@ import {
   Wand2, 
   HelpCircle, 
   MessageSquare,
-  Share2,
   Settings,
   Cloud,
-  Download,
   Plus,
   User
 } from 'lucide-react';
