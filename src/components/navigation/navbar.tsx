@@ -6,9 +6,8 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { Heart, Moon, Sun, Menu, Languages } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { AuthModal } from '@/components/auth/auth-modal';
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { cn } from '@/lib/utils';
+import { SignInButton, SignUpButton, UserButton, Show } from "@clerk/nextjs";
 import {
   Sheet,
   SheetContent,
@@ -24,7 +23,6 @@ import {
 } from "@/components/ui/dropdown-menu";
 
 export function Navbar() {
-  const [isAuthOpen, setIsAuthOpen] = React.useState(false);
   const [isDark, setIsDark] = React.useState(false);
   const [lang, setLang] = React.useState<'en' | 'es'>('en');
   const pathname = usePathname();
@@ -70,6 +68,8 @@ export function Navbar() {
       dashboard: 'DASHBOARD',
       favorites: 'FAVORITES',
       language: 'Language',
+      signIn: 'Sign In',
+      signUp: 'Sign Up',
     },
     es: {
       bible: 'BIBLIA',
@@ -79,6 +79,8 @@ export function Navbar() {
       dashboard: 'DASHBOARD',
       favorites: 'FAVORITOS',
       language: 'Idioma',
+      signIn: 'Iniciar Sesión',
+      signUp: 'Registrarse',
     }
   };
 
@@ -130,6 +132,20 @@ export function Navbar() {
                 >
                   {t.favorites}
                 </Link>
+                <Show when="signed-out">
+                  <div className="flex flex-col gap-2 pt-4">
+                    <SignInButton mode="modal">
+                      <Button variant="outline" className="w-full font-bold uppercase tracking-widest text-xs h-12">
+                        {t.signIn}
+                      </Button>
+                    </SignInButton>
+                    <SignUpButton mode="modal">
+                      <Button className="w-full bg-primary text-white font-bold uppercase tracking-widest text-xs h-12">
+                        {t.signUp}
+                      </Button>
+                    </SignUpButton>
+                  </div>
+                </Show>
               </nav>
             </SheetContent>
           </Sheet>
@@ -190,16 +206,27 @@ export function Navbar() {
             </Button>
           </div>
           
-          <Avatar 
-            className="w-8 h-8 sm:w-10 sm:h-10 cursor-pointer hover:opacity-80 transition-opacity border border-border"
-            onClick={() => setIsAuthOpen(true)}
-          >
-            <AvatarImage src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=40&h=40&fit=crop" />
-            <AvatarFallback className="bg-muted text-muted-foreground text-[10px] font-bold">SL</AvatarFallback>
-          </Avatar>
+          <div className="flex items-center gap-3">
+            <Show when="signed-out">
+              <div className="hidden sm:flex items-center gap-3">
+                <SignInButton mode="modal">
+                  <Button variant="ghost" className="text-[10px] font-bold tracking-[0.2em] uppercase hover:text-primary h-10 px-4">
+                    {t.signIn}
+                  </Button>
+                </SignInButton>
+                <SignUpButton mode="modal">
+                  <Button className="bg-primary text-white rounded-full px-6 h-10 font-bold text-[10px] tracking-[0.2em] uppercase shadow-lg shadow-primary/20">
+                    {t.signUp}
+                  </Button>
+                </SignUpButton>
+              </div>
+            </Show>
+            <Show when="signed-in">
+              <UserButton appearance={{ elements: { userButtonAvatarBox: "w-8 h-8 sm:w-10 sm:h-10 border border-border" } }} />
+            </Show>
+          </div>
         </div>
       </div>
-      <AuthModal isOpen={isAuthOpen} onClose={() => setIsAuthOpen(false)} />
     </header>
   );
 }
