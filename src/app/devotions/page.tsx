@@ -23,8 +23,10 @@ import {
   Reply
 } from 'lucide-react';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
+import { useI18n } from '@/components/providers/i18n-provider';
 
 export default function DevotionsPage() {
+  const { t } = useI18n();
   const [isPlaying, setIsPlaying] = React.useState(false);
   const heroImage = PlaceHolderImages.find(img => img.id === 'psalms-hero');
 
@@ -63,13 +65,13 @@ export default function DevotionsPage() {
         {/* Header section */}
         <header className="text-center space-y-4 mb-12">
           <span className="text-[10px] font-bold tracking-[0.3em] text-blue-600 uppercase">
-            DAILY DEVOTIONAL
+            {t('devotions.dailyLabel')}
           </span>
           <h1 className="text-5xl md:text-6xl font-headline font-bold text-slate-900 leading-tight">
             Morning Gratitude
           </h1>
           <p className="text-sm font-headline italic text-slate-400">
-            by Sarah Young · October 24
+            {t('devotions.byLabel')} Sarah Young · October 24
           </p>
         </header>
 
@@ -124,18 +126,18 @@ export default function DevotionsPage() {
           <div className="flex justify-center gap-4 py-8 border-b border-slate-100">
             <Button variant="secondary" className="bg-slate-50 hover:bg-slate-100 text-slate-600 rounded-full px-8 py-6 h-auto text-xs font-bold gap-2">
               <Heart className="w-4 h-4" />
-              Save to Library
+              {t('devotions.saveToLibrary')}
             </Button>
             <Button variant="secondary" className="bg-slate-50 hover:bg-slate-100 text-slate-600 rounded-full px-8 py-6 h-auto text-xs font-bold gap-2">
               <Share2 className="w-4 h-4" />
-              Share
+              {t('devotions.share')}
             </Button>
           </div>
 
           {/* Community Reflections Section */}
           <section className="space-y-12 pt-12">
             <h2 className="text-4xl font-headline font-bold text-slate-900 text-center">
-              Community Reflections
+              {t('devotions.communityReflections')}
             </h2>
 
             <div className="bg-slate-50/30 rounded-[2.5rem] p-8 border border-slate-50">
@@ -146,12 +148,12 @@ export default function DevotionsPage() {
                 </Avatar>
                 <div className="flex-1 space-y-4">
                   <Textarea 
-                    placeholder="Share your reflection on today's reading..." 
+                    placeholder={t('journal.placeholder')} 
                     className="min-h-[100px] bg-white border-none rounded-2xl shadow-sm text-slate-600 placeholder:text-slate-300 resize-none"
                   />
                   <div className="flex justify-end">
                     <Button className="bg-blue-600 hover:bg-blue-700 text-white rounded-full px-8 font-bold text-xs h-10">
-                      Post Reflection
+                      {t('devotions.postReflection')}
                     </Button>
                   </div>
                 </div>
@@ -190,7 +192,7 @@ export default function DevotionsPage() {
 
             <div className="flex justify-center pt-8">
               <Button variant="outline" className="rounded-full border-slate-100 text-slate-400 font-bold text-xs h-12 px-10 hover:bg-slate-50 transition-all">
-                Load More Reflections
+                {t('devotions.loadMore')}
               </Button>
             </div>
           </section>
@@ -207,7 +209,7 @@ export default function DevotionsPage() {
           </div>
           <div>
             <h4 className="text-xs font-bold text-slate-900 leading-tight">Morning Gratitude</h4>
-            <p className="text-[10px] text-slate-400 font-medium">Narrated by Sarah Young</p>
+            <p className="text-[10px] text-slate-400 font-medium">{t('devotions.narratedBy')} Sarah Young</p>
           </div>
         </div>
 

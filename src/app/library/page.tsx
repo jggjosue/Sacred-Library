@@ -12,8 +12,7 @@ import { Slider } from '@/components/ui/slider';
 import { cn } from '@/lib/utils';
 import { Heart, ArrowRight, Search, Play, SkipBack, SkipForward, Volume2 } from 'lucide-react';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
-
-const filters = ["Verses", "Devotionals", "Plans"];
+import { useI18n } from '@/components/providers/i18n-provider';
 
 const libraryItems = [
   {
@@ -53,7 +52,9 @@ const recentlyPlayed = [
 ];
 
 export default function LibraryPage() {
-  const [activeFilter, setActiveFilter] = React.useState("Devotionals");
+  const { t } = useI18n();
+  const filters = [t('library.devotionalsTab'), t('nav.plans'), t('explore.scripture')];
+  const [activeFilter, setActiveFilter] = React.useState(t('library.devotionalsTab'));
   const psalmsHero = PlaceHolderImages.find(img => img.id === 'psalms-hero');
 
   const renderBibleChapters = () => (
@@ -72,7 +73,7 @@ export default function LibraryPage() {
         
         <div className="absolute inset-0 p-12 md:p-20 flex flex-col justify-end md:flex-row md:items-end md:justify-between gap-12">
           <div className="text-white space-y-4 max-w-xl">
-            <span className="text-[10px] font-bold tracking-[0.3em] uppercase opacity-70">Now Playing</span>
+            <span className="text-[10px] font-bold tracking-[0.3em] uppercase opacity-70">{t('library.nowPlaying')}</span>
             <h2 className="text-5xl md:text-7xl font-headline font-bold leading-tight">
               The Book of Psalms
             </h2>
@@ -115,12 +116,12 @@ export default function LibraryPage() {
       <div className="space-y-12">
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-8 border-b border-slate-100">
           <div className="flex gap-12">
-            {["Bible Chapters", "Devotionals", "Sermons"].map((tab) => (
+            {[t('library.bibleChapters'), t('library.devotionalsTab'), t('library.sermonsTab')].map((tab) => (
               <button
                 key={tab}
                 className={cn(
                   "pb-6 text-sm font-bold tracking-tight transition-all relative",
-                  tab === "Bible Chapters" 
+                  tab === t('library.bibleChapters') 
                     ? "text-blue-600 after:absolute after:bottom-[-1px] after:left-0 after:right-0 after:h-0.5 after:bg-blue-600"
                     : "text-slate-400 hover:text-slate-600"
                 )}
@@ -134,14 +135,14 @@ export default function LibraryPage() {
         <div className="relative max-w-md">
           <Search className="absolute left-6 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-300" />
           <Input 
-            placeholder="Search the library..." 
+            placeholder={t('library.searchPlaceholder')} 
             className="pl-14 h-14 bg-slate-50/50 border-none rounded-full text-slate-900 placeholder:text-slate-300"
           />
         </div>
 
         {/* Recently Played */}
         <div className="space-y-10">
-          <h3 className="text-4xl font-headline font-bold text-slate-900">Recently Played</h3>
+          <h3 className="text-4xl font-headline font-bold text-slate-900">{t('library.recentlyPlayed')}</h3>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {recentlyPlayed.map((item, idx) => (
               <div key={idx} className="group cursor-pointer">
@@ -177,10 +178,10 @@ export default function LibraryPage() {
       <Navbar />
       
       <main className="max-w-7xl mx-auto px-6 pt-32 pb-24">
-        {activeFilter !== "Verses" && (
+        {activeFilter !== t('explore.scripture') && (
           <header className="mb-16 space-y-10">
             <h1 className="text-6xl font-headline font-bold text-slate-900 tracking-tight">
-              Library
+              {t('library.title')}
             </h1>
 
             <div className="flex flex-wrap gap-4">
@@ -202,7 +203,7 @@ export default function LibraryPage() {
           </header>
         )}
 
-        {activeFilter === "Verses" ? renderBibleChapters() : (
+        {activeFilter === t('explore.scripture') ? renderBibleChapters() : (
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
             {libraryItems.map((item, idx) => (
               <div key={idx} className="group flex flex-col h-full animate-in fade-in slide-in-from-bottom-4 duration-500" style={{ animationDelay: `${idx * 150}ms` }}>
@@ -243,7 +244,7 @@ export default function LibraryPage() {
                             : "bg-slate-50 hover:bg-slate-100 text-slate-900 shadow-none"
                         )}
                       >
-                        Read Now
+                        {t('library.readNow')}
                         <ArrowRight className="w-4 h-4 ml-2" />
                       </Button>
                     </Link>
