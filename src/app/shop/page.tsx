@@ -3,7 +3,7 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { ShoppingBag, User } from "lucide-react";
+import { User } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { useI18n } from "@/components/providers/i18n-provider";
@@ -219,15 +219,6 @@ export default function ShopPage() {
             ))}
           </nav>
           <div className="flex items-center gap-2 text-[#1e3a5f] dark:text-blue-200">
-            <Button
-              type="button"
-              variant="ghost"
-              size="icon"
-              className="rounded-full"
-              aria-label={t("nav.store")}
-            >
-              <ShoppingBag className="h-5 w-5" />
-            </Button>
             <Link href="/profile" aria-label="Profile">
               <Button
                 type="button"
