@@ -16,13 +16,12 @@ export function Footer() {
 
           <nav className="flex flex-wrap justify-center items-center gap-x-12 gap-y-4 text-[10px] font-bold text-slate-400 uppercase tracking-widest">
             <Link href="#" className="hover:text-blue-600 transition-colors">Privacy Policy</Link>
-            <Link href="#" className="hover:text-blue-600 transition-colors">Terms of Service</Link>
+            <Link href="#" className="hover:text-blue-600 transition-colors">Terms of Devotion</Link>
             <Link href="#" className="hover:text-blue-600 transition-colors">Support</Link>
-            <Link href="#" className="hover:text-blue-600 transition-colors">Our Mission</Link>
           </nav>
           
           <div className="text-[10px] font-bold text-slate-300 tracking-widest uppercase">
-            © 2024 Aura Sanctum. A Digital Sanctuary for Devotion.
+            © 2024 Aura Sanctum. All rights reserved.
           </div>
         </div>
       </div>

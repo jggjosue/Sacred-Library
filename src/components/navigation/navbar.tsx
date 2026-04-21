@@ -15,10 +15,10 @@ export function Navbar() {
   const pathname = usePathname();
 
   const navLinks = [
-    { name: 'Devotions', href: '/devotions' },
-    { name: 'Scripture', href: '/scripture' },
-    { name: 'Reflection', href: '/plans' },
+    { name: 'Sanctum', href: '/' },
+    { name: 'Devotion', href: '/devotions' },
     { name: 'Library', href: '/library' },
+    { name: 'Downloads', href: '/downloads' },
   ];
 
   return (
@@ -36,7 +36,7 @@ export function Navbar() {
                 href={link.href} 
                 className={cn(
                   "text-sm font-medium transition-all relative py-2 text-slate-500 hover:text-blue-600",
-                  pathname === link.href && "text-blue-600 after:absolute after:bottom-0 after:left-0 after:right-0 after:h-0.5 after:bg-blue-600"
+                  (pathname === link.href || (link.href !== '/' && pathname.startsWith(link.href))) && "text-blue-600 after:absolute after:bottom-0 after:left-0 after:right-0 after:h-0.5 after:bg-blue-600"
                 )}
               >
                 {link.name}
