@@ -4,7 +4,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Settings, User, Menu } from 'lucide-react';
+import { User, Menu } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { AuthModal } from '@/components/auth/auth-modal';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
@@ -15,10 +15,10 @@ export function Navbar() {
   const pathname = usePathname();
 
   const navLinks = [
-    { name: 'Home', href: '/' },
+    { name: 'Devotions', href: '/devotions' },
+    { name: 'Scripture', href: '/scripture' },
+    { name: 'Reflection', href: '/plans' },
     { name: 'Library', href: '/library' },
-    { name: 'Reflect', href: '/plans' },
-    { name: 'Sanctum', href: '/scripture' },
   ];
 
   return (
@@ -26,7 +26,7 @@ export function Navbar() {
       <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
         <div className="flex items-center gap-16">
           <Link href="/" className="flex items-center gap-2 group">
-            <span className="font-headline text-2xl font-bold italic tracking-tight text-slate-900">Aura Sanctum</span>
+            <span className="font-headline text-2xl font-bold italic tracking-tight text-blue-600">Aura Sanctum</span>
           </Link>
           
           <nav className="hidden md:flex items-center gap-10">
@@ -46,10 +46,6 @@ export function Navbar() {
         </div>
 
         <div className="flex items-center gap-6">
-          <Button variant="ghost" size="icon" className="text-slate-400 hover:text-blue-600">
-            <Settings className="w-5 h-5" />
-          </Button>
-          
           <Button 
             onClick={() => setIsAuthOpen(true)}
             variant="ghost" 
