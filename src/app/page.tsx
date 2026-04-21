@@ -23,14 +23,16 @@ export default function Home() {
       
       {/* Hero Section */}
       <section className="relative h-[80vh] flex items-center justify-center overflow-hidden">
-        <Image
-          src={heroImage?.imageUrl || ''}
-          alt="Majestic Library"
-          fill
-          className="object-cover"
-          priority
-          data-ai-hint={heroImage?.imageHint}
-        />
+        {heroImage?.imageUrl && (
+          <Image
+            src={heroImage.imageUrl}
+            alt="Majestic Library"
+            fill
+            className="object-cover"
+            priority
+            data-ai-hint={heroImage.imageHint}
+          />
+        )}
         <div className="absolute inset-0 bg-primary/40 mix-blend-multiply" />
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-background/20 to-background" />
         

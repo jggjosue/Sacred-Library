@@ -72,6 +72,42 @@
       "description": "Sunlight filtering through a dense pine forest.",
       "imageUrl": "https://picsum.photos/seed/forest-audio/1200/500",
       "imageHint": "forest sunlight"
+    },
+    {
+      "id": "plan-mountains",
+      "description": "Majestic mountains with snow caps.",
+      "imageUrl": "https://picsum.photos/seed/snow-mtn/600/400",
+      "imageHint": "snowy mountains"
+    },
+    {
+      "id": "library-wave",
+      "description": "Soft blue waves crashing on a beach.",
+      "imageUrl": "https://picsum.photos/seed/ocean-wave/600/400",
+      "imageHint": "ocean waves"
+    },
+    {
+      "id": "library-morning",
+      "description": "A cozy morning desk with a Bible and coffee.",
+      "imageUrl": "https://picsum.photos/seed/morning-desk/600/400",
+      "imageHint": "morning coffee"
+    },
+    {
+      "id": "genesis-card",
+      "description": "A beautiful garden at dawn.",
+      "imageUrl": "https://picsum.photos/seed/genesis-garden/400/400",
+      "imageHint": "dawn garden"
+    },
+    {
+      "id": "proverbs-card",
+      "description": "An open book with golden light.",
+      "imageUrl": "https://picsum.photos/seed/proverbs-light/400/400",
+      "imageHint": "open book"
+    },
+    {
+      "id": "john-card",
+      "description": "A simple wooden cross on a hill.",
+      "imageUrl": "https://picsum.photos/seed/john-cross/400/400",
+      "imageHint": "wooden cross"
     }
   ]
 }

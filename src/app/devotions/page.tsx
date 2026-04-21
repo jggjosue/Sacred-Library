@@ -75,14 +75,16 @@ export default function DevotionsPage() {
 
         {/* Hero Image */}
         <div className="relative h-[450px] w-full rounded-[2.5rem] overflow-hidden shadow-2xl mb-20">
-          <Image
-            src={heroImage?.imageUrl || ''}
-            alt="Misty Forest"
-            fill
-            className="object-cover"
-            priority
-            data-ai-hint="misty forest"
-          />
+          {heroImage?.imageUrl && (
+            <Image
+              src={heroImage.imageUrl}
+              alt="Misty Forest"
+              fill
+              className="object-cover"
+              priority
+              data-ai-hint={heroImage.imageHint || "misty forest"}
+            />
+          )}
         </div>
 
         {/* Content Body */}
@@ -201,7 +203,7 @@ export default function DevotionsPage() {
       <div className="fixed bottom-0 left-0 right-0 z-50 bg-white border-t border-slate-100 h-24 px-8 flex items-center justify-between shadow-[0_-8px_30px_rgb(0,0,0,0.04)]">
         <div className="flex items-center gap-4 w-1/4">
           <div className="relative w-12 h-12 rounded-full overflow-hidden">
-            <Image src={heroImage?.imageUrl || ''} alt="Devotion" fill className="object-cover" />
+            {heroImage?.imageUrl && <Image src={heroImage.imageUrl} alt="Devotion" fill className="object-cover" />}
           </div>
           <div>
             <h4 className="text-xs font-bold text-slate-900 leading-tight">Morning Gratitude</h4>
