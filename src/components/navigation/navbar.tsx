@@ -74,7 +74,7 @@ export function Navbar() {
     es: {
       bible: 'BIBLIA',
       plans: 'PLANES',
-      devotions: 'DEVOCIONALES',
+      devocionales: 'DEVOCIONALES',
       library: 'BIBLIOTECA',
       dashboard: 'DASHBOARD',
       favorites: 'FAVORITOS',
@@ -89,7 +89,7 @@ export function Navbar() {
   const navLinks = [
     { name: t.bible, href: '/bible' },
     { name: t.plans, href: '/plans' },
-    { name: t.devotions, href: '/devotions' },
+    { name: lang === 'es' ? t.devocionales : t.devotions, href: '/devotions' },
     { name: t.library, href: '/library' },
     { name: t.dashboard, href: '/studio', isExternal: true },
   ];
@@ -150,22 +150,6 @@ export function Navbar() {
             </SheetContent>
           </Sheet>
           
-          <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-              <Button variant="ghost" size="icon" className="text-muted-foreground hover:text-primary rounded-full">
-                <Languages className="w-5 h-5" />
-              </Button>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent align="start" className="rounded-xl border-border bg-card">
-              <DropdownMenuItem onClick={() => handleLangChange('en')} className="font-bold text-[10px] tracking-widest uppercase cursor-pointer">
-                English
-              </DropdownMenuItem>
-              <DropdownMenuItem onClick={() => handleLangChange('es')} className="font-bold text-[10px] tracking-widest uppercase cursor-pointer">
-                Español
-              </DropdownMenuItem>
-            </DropdownMenuContent>
-          </DropdownMenu>
-
           <Link href="/" className="flex items-center gap-2 group shrink-0">
             <span className="font-headline text-xl sm:text-2xl font-bold tracking-tight text-primary">Sacred Library</span>
           </Link>
@@ -195,6 +179,22 @@ export function Navbar() {
                 <Heart className={cn("w-5 h-5", pathname === '/favorites' && "fill-primary text-primary")} />
               </Button>
             </Link>
+
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button variant="ghost" size="icon" className="text-muted-foreground hover:text-primary rounded-full">
+                  <Languages className="w-5 h-5" />
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="end" className="rounded-xl border-border bg-card">
+                <DropdownMenuItem onClick={() => handleLangChange('en')} className="font-bold text-[10px] tracking-widest uppercase cursor-pointer">
+                  English
+                </DropdownMenuItem>
+                <DropdownMenuItem onClick={() => handleLangChange('es')} className="font-bold text-[10px] tracking-widest uppercase cursor-pointer">
+                  Español
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
 
             <Button 
               variant="ghost" 
