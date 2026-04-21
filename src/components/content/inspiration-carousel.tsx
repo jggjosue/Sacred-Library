@@ -12,33 +12,38 @@ import {
 } from "@/components/ui/carousel";
 import { Card, CardContent } from "@/components/ui/card";
 import { PlaceHolderImages } from '@/lib/placeholder-images';
+import { useI18n } from '@/components/providers/i18n-provider';
 
 const inspirationItems = [
-  { id: 'inspiration-1', title: 'Eternal Peace', description: 'Finding tranquility in the vastness of the heavens.' },
-  { id: 'inspiration-2', title: 'New Beginnings', description: 'Every dawn brings a fresh opportunity for grace.' },
-  { id: 'inspiration-3', title: 'Steadfast Faith', description: 'Remaining rooted even when the seasons change.' },
-  { id: 'inspiration-4', title: 'Sacred Light', description: 'Letting the light of truth illuminate your path.' },
-  { id: 'inspiration-5', title: 'Abundant Joy', description: 'Celebrating the beauty in every small flower.' },
-  { id: 'inspiration-6', title: 'Reflective Stillness', description: 'Seeing clearly when the heart is quiet.' },
-  { id: 'inspiration-7', title: 'Unending Hope', description: 'Walking towards a future filled with promise.' },
-  { id: 'inspiration-8', title: 'Inner Strength', description: 'A single flame can conquer any darkness.' },
-  { id: 'inspiration-9', title: 'Pure Grace', description: 'The gentle touch of peace in a winter world.' },
-  { id: 'inspiration-10', title: 'Spiritual Freedom', description: 'Rising above the noise to find higher perspectives.' },
-  { id: 'inspiration-11', title: 'Constant Flow', description: 'The steady movement of divine love in our lives.' },
-  { id: 'inspiration-12', title: 'Word of Life', description: 'Finding comfort and wisdom in sacred spaces.' },
-  { id: 'inspiration-13', title: 'Faithful Promise', description: 'A reminder of the beauty after the storm.' },
-  { id: 'inspiration-14', title: 'Strong Foundations', description: 'Building a life on the bridges of the past.' },
-  { id: 'inspiration-15', title: 'Guiding Grace', description: 'A constant beacon in the shifting tides of life.' },
+  { id: 'inspiration-1', translationKey: 'inspiration.item1' },
+  { id: 'inspiration-2', translationKey: 'inspiration.item2' },
+  { id: 'inspiration-3', translationKey: 'inspiration.item3' },
+  { id: 'inspiration-4', translationKey: 'inspiration.item4' },
+  { id: 'inspiration-5', translationKey: 'inspiration.item5' },
+  { id: 'inspiration-6', translationKey: 'inspiration.item6' },
+  { id: 'inspiration-7', translationKey: 'inspiration.item7' },
+  { id: 'inspiration-8', translationKey: 'inspiration.item8' },
+  { id: 'inspiration-9', translationKey: 'inspiration.item9' },
+  { id: 'inspiration-10', translationKey: 'inspiration.item10' },
+  { id: 'inspiration-11', translationKey: 'inspiration.item11' },
+  { id: 'inspiration-12', translationKey: 'inspiration.item12' },
+  { id: 'inspiration-13', translationKey: 'inspiration.item13' },
+  { id: 'inspiration-14', translationKey: 'inspiration.item14' },
+  { id: 'inspiration-15', translationKey: 'inspiration.item15' },
 ];
 
 export function InspirationCarousel() {
+  const { t } = useI18n();
+
   return (
     <section className="py-24 bg-slate-50/50 dark:bg-white/5 overflow-hidden">
       <div className="max-w-7xl mx-auto px-12 md:px-16">
         <div className="text-center mb-16 space-y-4 px-6">
-          <h2 className="text-4xl md:text-5xl font-headline font-bold text-foreground">Moments of Inspiration</h2>
+          <h2 className="text-4xl md:text-5xl font-headline font-bold text-foreground">
+            {t('inspiration.title')}
+          </h2>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            A curated gallery of spiritual reflections to guide your journey through beauty and truth.
+            {t('inspiration.subtitle')}
           </p>
         </div>
 
@@ -61,7 +66,7 @@ export function InspirationCarousel() {
                           {imageData?.imageUrl && (
                             <Image
                               src={imageData.imageUrl}
-                              alt={item.title}
+                              alt={t(`${item.translationKey}.title`)}
                               fill
                               className="object-cover"
                               data-ai-hint={imageData.imageHint}
@@ -71,10 +76,10 @@ export function InspirationCarousel() {
                         </div>
                         <div className="p-8 space-y-3">
                           <h3 className="text-2xl font-headline font-bold text-card-foreground">
-                            {item.title}
+                            {t(`${item.translationKey}.title`)}
                           </h3>
                           <p className="text-sm text-muted-foreground leading-relaxed">
-                            {item.description}
+                            {t(`${item.translationKey}.desc`)}
                           </p>
                         </div>
                       </CardContent>
