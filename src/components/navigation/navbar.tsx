@@ -4,7 +4,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { BookOpen, Heart, Moon, Sun } from 'lucide-react';
+import { Heart, Moon, Sun } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { AuthModal } from '@/components/auth/auth-modal';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
@@ -76,10 +76,6 @@ export function Navbar() {
                 <Heart className={cn("w-5 h-5", pathname === '/favorites' && "fill-primary text-primary")} />
               </Button>
             </Link>
-
-            <Button variant="ghost" size="icon" className="text-primary hover:bg-primary/10 rounded-full">
-              <BookOpen className="w-5 h-5 fill-current" />
-            </Button>
 
             <Button 
               variant="ghost" 
