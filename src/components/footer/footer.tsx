@@ -1,4 +1,3 @@
-
 "use client";
 
 import Link from 'next/link';
@@ -10,7 +9,7 @@ export function Footer() {
         <div className="flex flex-col md:flex-row justify-between items-center gap-8">
           <div className="flex flex-col items-center md:items-start gap-4">
             <h2 className="font-headline text-2xl font-bold italic text-blue-600">
-              Aura Sanctum
+              Sacred Library
             </h2>
           </div>
 
@@ -22,7 +21,7 @@ export function Footer() {
           </nav>
           
           <div className="text-[11px] font-medium text-slate-400">
-            © 2024 Aura Sanctum. A space for quiet reflection.
+            © 2024 Sacred Library. A space for quiet reflection.
           </div>
         </div>
       </div>

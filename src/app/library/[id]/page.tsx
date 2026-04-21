@@ -1,4 +1,3 @@
-
 "use client";
 
 import React from 'react';
@@ -20,7 +19,7 @@ export default function DevotionalDetailPage() {
       <header className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-slate-100">
         <div className="max-w-5xl mx-auto px-6 h-20 flex items-center justify-between">
           <Link href="/library" className="flex items-center gap-2 group text-slate-900">
-            <span className="font-headline text-2xl font-bold italic tracking-tight">Aura Sanctum</span>
+            <span className="font-headline text-2xl font-bold italic tracking-tight">Sacred Library</span>
           </Link>
           
           <div className="flex items-center gap-4">

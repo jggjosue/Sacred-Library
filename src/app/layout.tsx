@@ -1,10 +1,9 @@
-
 import type {Metadata} from 'next';
 import './globals.css';
 import {Toaster} from '@/components/ui/toaster';
 
 export const metadata: Metadata = {
-  title: 'Aura Sanctum | Divine Wisdom & Reflection',
+  title: 'Sacred Library | Divine Wisdom & Reflection',
   description: 'Your personal sanctuary for scripture, devotionals, and spiritual growth.',
 };
 

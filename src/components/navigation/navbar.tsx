@@ -1,4 +1,3 @@
-
 "use client";
 
 import React from 'react';
@@ -25,7 +24,7 @@ export function Navbar() {
     <header className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md">
       <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
         <Link href="/" className="flex items-center gap-2 group">
-          <span className="font-headline text-2xl font-bold italic tracking-tight text-blue-600">Aura Sanctum</span>
+          <span className="font-headline text-2xl font-bold italic tracking-tight text-blue-600">Sacred Library</span>
         </Link>
         
         <nav className="hidden md:flex items-center gap-10">
