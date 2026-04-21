@@ -3,6 +3,7 @@
 
 import React from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import { Navbar } from '@/components/navigation/navbar';
 import { Footer } from '@/components/footer/footer';
 import { Button } from '@/components/ui/button';
@@ -79,9 +80,11 @@ export default function PlansPage() {
                       </div>
                     </div>
                   </div>
-                  <Button className="bg-blue-600 hover:bg-blue-700 text-white rounded-full px-10 h-14 font-bold text-sm shadow-xl shadow-blue-100 transition-all hover:scale-105">
-                    {t('plans.continue')} <ArrowRight className="w-4 h-4 ml-2" />
-                  </Button>
+                  <Link href="/plans/jesus">
+                    <Button className="bg-blue-600 hover:bg-blue-700 text-white rounded-full px-10 h-14 font-bold text-sm shadow-xl shadow-blue-100 transition-all hover:scale-105">
+                      {t('plans.continue')} <ArrowRight className="w-4 h-4 ml-2" />
+                    </Button>
+                  </Link>
                 </div>
               </div>
             </section>
@@ -91,21 +94,23 @@ export default function PlansPage() {
               <h2 className="text-4xl font-headline font-bold text-slate-900">{t('plans.recommended')}</h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 {availablePlans.map((plan) => (
-                  <div key={plan.id} className="relative h-80 rounded-[3rem] overflow-hidden group cursor-pointer shadow-2xl transition-transform duration-500 hover:scale-[1.02]">
-                    <Image
-                      src={plan.image?.imageUrl || ''}
-                      alt={t(plan.titleKey)}
-                      fill
-                      className="object-cover"
-                      data-ai-hint={plan.image?.imageHint}
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-                    <div className="absolute bottom-8 left-8 right-8 text-white space-y-3">
-                      <span className="text-[10px] font-bold tracking-[0.2em] opacity-80 uppercase">{plan.duration} {t('plans.left').split(' ')[1]}</span>
-                      <h3 className="text-2xl font-headline font-bold leading-tight">{t(plan.titleKey)}</h3>
-                      <p className="text-xs font-medium opacity-70 line-clamp-2 leading-relaxed">{t(plan.descKey)}</p>
+                  <Link href={`/plans/${plan.id}`} key={plan.id}>
+                    <div className="relative h-80 rounded-[3rem] overflow-hidden group cursor-pointer shadow-2xl transition-transform duration-500 hover:scale-[1.02]">
+                      <Image
+                        src={plan.image?.imageUrl || ''}
+                        alt={t(plan.titleKey)}
+                        fill
+                        className="object-cover"
+                        data-ai-hint={plan.image?.imageHint}
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+                      <div className="absolute bottom-8 left-8 right-8 text-white space-y-3">
+                        <span className="text-[10px] font-bold tracking-[0.2em] opacity-80 uppercase">{plan.duration} {t('plans.left').split(' ')[1]}</span>
+                        <h3 className="text-2xl font-headline font-bold leading-tight">{t(plan.titleKey)}</h3>
+                        <p className="text-xs font-medium opacity-70 line-clamp-2 leading-relaxed">{t(plan.descKey)}</p>
+                      </div>
                     </div>
-                  </div>
+                  </Link>
                 ))}
               </div>
             </section>
