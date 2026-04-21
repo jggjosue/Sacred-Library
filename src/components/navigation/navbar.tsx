@@ -253,30 +253,35 @@ export function Navbar() {
                 <p className="text-[10px] font-bold uppercase tracking-widest">{t('nav.theme')}</p>
               </TooltipContent>
             </Tooltip>
+
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <Link
+                  href="/shop"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex"
+                >
+                  <Button
+                    type="button"
+                    variant="ghost"
+                    size="icon"
+                    className="text-muted-foreground hover:text-primary rounded-full"
+                    aria-label={t('nav.store')}
+                  >
+                    <Store className="w-5 h-5" />
+                  </Button>
+                </Link>
+              </TooltipTrigger>
+              <TooltipContent>
+                <p className="text-[10px] font-bold uppercase tracking-widest">{t('nav.store')}</p>
+              </TooltipContent>
+            </Tooltip>
           </div>
           
           <div className="flex items-center gap-1">
             <Show when="signed-out">
               <div className="flex items-center gap-1">
-                <Tooltip>
-                  <TooltipTrigger asChild>
-                    <Link href="/downloads" className="inline-flex">
-                      <Button
-                        type="button"
-                        variant="ghost"
-                        size="icon"
-                        className="text-muted-foreground hover:text-primary rounded-full"
-                        aria-label={t('nav.store')}
-                      >
-                        <Store className="w-5 h-5" />
-                      </Button>
-                    </Link>
-                  </TooltipTrigger>
-                  <TooltipContent>
-                    <p className="text-[10px] font-bold uppercase tracking-widest">{t('nav.store')}</p>
-                  </TooltipContent>
-                </Tooltip>
-
                 <Tooltip>
                   <TooltipTrigger asChild>
                     <span className="inline-flex">

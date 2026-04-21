@@ -1,6 +1,7 @@
 
 import type {Metadata} from 'next';
 import './globals.css';
+import { Analytics } from '@vercel/analytics/next';
 import {Toaster} from '@/components/ui/toaster';
 import { ClerkProvider } from "@clerk/nextjs";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -34,6 +35,7 @@ export default function RootLayout({
             <TooltipProvider>
               {children}
               <Toaster />
+              <Analytics />
             </TooltipProvider>
           </I18nProvider>
         </ClerkProvider>
