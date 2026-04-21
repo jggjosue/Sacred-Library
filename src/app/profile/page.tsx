@@ -11,8 +11,10 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { BookMarked, History, Settings, User, Bell, Shield, Download } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { useI18n } from '@/components/providers/i18n-provider';
 
 export default function ProfilePage() {
+  const { t } = useI18n();
   const pathname = usePathname();
 
   return (
@@ -33,56 +35,56 @@ export default function ProfilePage() {
                   </Avatar>
                 </div>
                 <h2 className="text-3xl font-headline font-bold text-slate-900">John Doe</h2>
-                <p className="text-slate-400 font-medium mb-8">Sacred Library Member since 2024</p>
+                <p className="text-slate-400 font-medium mb-8">{t('profile.memberSince')} 2024</p>
                 
                 <div className="flex flex-col gap-3 px-4">
                   <Button className="w-full rounded-full bg-blue-600 hover:bg-blue-700 h-12 font-bold">
-                    Edit Profile
+                    {t('profile.editProfile')}
                   </Button>
                   <Button variant="outline" className="w-full rounded-full border-slate-100 h-12 font-bold text-slate-600">
-                    Sign Out
+                    {t('profile.signOut')}
                   </Button>
                 </div>
               </CardContent>
             </Card>
 
             <nav className="bg-white rounded-[2rem] border border-slate-100 overflow-hidden">
-              <ProfileNavLink href="/profile" icon={User} label="Personal Information" active={pathname === '/profile'} />
-              <ProfileNavLink href="/downloads" icon={Download} label="Downloads" active={pathname === '/downloads'} />
-              <ProfileNavLink href="#" icon={Bell} label="Notifications" />
-              <ProfileNavLink href="#" icon={Shield} label="Security & Privacy" />
-              <ProfileNavLink href="#" icon={Settings} label="General Settings" />
+              <ProfileNavLink href="/profile" icon={User} label={t('profile.personalInfo')} active={pathname === '/profile'} />
+              <ProfileNavLink href="/downloads" icon={Download} label={t('profile.downloads')} active={pathname === '/downloads'} />
+              <ProfileNavLink href="#" icon={Bell} label={t('profile.notifications')} />
+              <ProfileNavLink href="#" icon={Shield} label={t('profile.security')} />
+              <ProfileNavLink href="#" icon={Settings} label={t('profile.generalSettings')} />
             </nav>
           </aside>
 
           {/* Activity Section */}
           <section className="lg:col-span-8 space-y-12">
             <header className="space-y-2">
-              <h1 className="text-5xl font-headline font-bold text-slate-900 tracking-tight">Your Journey</h1>
-              <p className="text-slate-500">Track your spiritual growth and activity.</p>
+              <h1 className="text-5xl font-headline font-bold text-slate-900 tracking-tight">{t('profile.title')}</h1>
+              <p className="text-slate-500">{t('profile.subtitle')}</p>
             </header>
 
             <div className="grid md:grid-cols-2 gap-8">
               <ActivityCard 
                 icon={BookMarked} 
-                title="Saved Content" 
+                title={t('profile.savedContent')} 
                 count={24} 
-                description="Verses and devotionals in your library."
+                description={t('profile.savedDesc')}
                 color="text-blue-600"
                 bgColor="bg-blue-50"
               />
               <ActivityCard 
                 icon={History} 
-                title="Reading History" 
+                title={t('profile.readingHistory')} 
                 count={156} 
-                description="Chapters and devotionals completed."
+                description={t('profile.historyDesc')}
                 color="text-emerald-600"
                 bgColor="bg-emerald-50"
               />
             </div>
 
             <div className="space-y-8">
-              <h3 className="text-2xl font-headline font-bold text-slate-900">Recent Activity</h3>
+              <h3 className="text-2xl font-headline font-bold text-slate-900">{t('profile.recentActivity')}</h3>
               <div className="space-y-4">
                 {[
                   { action: "Saved a verse", detail: "Philippians 4:13", time: "2 hours ago" },

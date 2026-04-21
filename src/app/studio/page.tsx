@@ -29,8 +29,10 @@ import {
   SheetContent,
   SheetTrigger,
 } from "@/components/ui/sheet";
+import { useI18n } from '@/components/providers/i18n-provider';
 
 export default function StudioPage() {
+  const { t } = useI18n();
   const faithImage = PlaceHolderImages.find(img => img.id === 'topic-faith');
   const [isPropertiesOpen, setIsPropertiesOpen] = React.useState(false);
 
@@ -39,18 +41,18 @@ export default function StudioPage() {
       {/* Top Navigation */}
       <header className="h-16 border-b flex items-center justify-between px-4 sm:px-6 shrink-0">
         <div className="flex items-center gap-2">
-          <Link href="/" className="font-headline text-lg sm:text-xl font-bold text-blue-600 tracking-tight">Aura Sanctum</Link>
+          <Link href="/" className="font-headline text-lg sm:text-xl font-bold text-blue-600 tracking-tight">Sacred Library</Link>
         </div>
         
         <div className="flex items-center gap-2 sm:gap-6">
           <div className="hidden sm:flex items-center gap-4 text-xs font-bold text-slate-400">
-            <button className="hover:text-blue-600 transition-colors uppercase tracking-wider">Publish</button>
-            <button className="hover:text-blue-600 transition-colors uppercase tracking-wider">Export</button>
+            <button className="hover:text-blue-600 transition-colors uppercase tracking-wider">{t('studio.publish')}</button>
+            <button className="hover:text-blue-600 transition-colors uppercase tracking-wider">{t('studio.export')}</button>
           </div>
           <div className="hidden sm:block h-4 w-px bg-slate-100 mx-2" />
           <div className="flex items-center gap-1 sm:gap-3">
             <Button variant="ghost" size="sm" className="hidden sm:flex text-blue-600 font-bold gap-2 hover:bg-blue-50">
-              Share
+              {t('studio.share')}
             </Button>
             <Button variant="ghost" size="icon" className="text-slate-400 hover:text-blue-600">
               <Cloud className="w-5 h-5" />
@@ -74,18 +76,18 @@ export default function StudioPage() {
         {/* Mobile Toolbar (Bottom on Mobile) */}
         <aside className="lg:w-20 border-t lg:border-t-0 lg:border-r flex flex-row lg:flex-col items-center py-2 lg:py-6 justify-around lg:justify-between shrink-0 bg-white z-10">
           <div className="flex flex-row lg:flex-col gap-4 sm:gap-8 items-center w-full justify-around lg:justify-start">
-            <SidebarIcon icon={Layout} label="Studio" active badge="Creative Hub" />
-            <SidebarIcon icon={Monitor} label="Canvas" />
-            <SidebarIcon icon={Book} label="Scripture" />
-            <SidebarIcon icon={Type} label="Typography" />
-            <SidebarIcon icon={Wand2} label="Effects" highlighted />
+            <SidebarIcon icon={Layout} label={t('studio.studio')} active badge="Creative Hub" />
+            <SidebarIcon icon={Monitor} label={t('studio.canvas')} />
+            <SidebarIcon icon={Book} label={t('studio.scripture')} />
+            <SidebarIcon icon={Type} label={t('studio.typography')} />
+            <SidebarIcon icon={Wand2} label={t('studio.effects')} highlighted />
           </div>
           
           <div className="hidden lg:flex flex-col gap-6 items-center">
-            <SidebarIcon icon={HelpCircle} label="Help" small />
-            <SidebarIcon icon={MessageSquare} label="Feedback" small />
+            <SidebarIcon icon={HelpCircle} label={t('studio.help')} small />
+            <SidebarIcon icon={MessageSquare} label={t('studio.feedback')} small />
             <Link href="/profile" className="w-full">
-              <SidebarIcon icon={User} label="Profile" small />
+              <SidebarIcon icon={User} label={t('studio.profile')} small />
             </Link>
           </div>
         </aside>
@@ -130,36 +132,37 @@ export default function StudioPage() {
 }
 
 function PropertiesContent() {
+  const { t } = useI18n();
   return (
     <>
       <div className="space-y-1 mt-6 lg:mt-0">
-        <h3 className="text-2xl font-headline font-bold text-slate-900">Properties</h3>
-        <p className="text-sm text-slate-400 font-medium">Refine details</p>
+        <h3 className="text-2xl font-headline font-bold text-slate-900">{t('studio.properties')}</h3>
+        <p className="text-sm text-slate-400 font-medium">{t('studio.refine')}</p>
       </div>
 
       <div className="space-y-8 mt-10">
         <Tabs defaultValue="outlines" className="w-full">
           <TabsList className="bg-transparent border-b rounded-none w-full justify-start h-auto p-0 gap-6">
-            <TabsTrigger value="filters" className="rounded-none border-b-2 border-transparent data-[state=active]:border-blue-600 data-[state=active]:bg-transparent data-[state=active]:shadow-none text-[10px] font-bold uppercase tracking-widest p-0 pb-3">Filters</TabsTrigger>
-            <TabsTrigger value="shadows" className="rounded-none border-b-2 border-transparent data-[state=active]:border-blue-600 data-[state=active]:bg-transparent data-[state=active]:shadow-none text-[10px] font-bold uppercase tracking-widest p-0 pb-3">Shadows</TabsTrigger>
-            <TabsTrigger value="outlines" className="rounded-none border-b-2 border-transparent data-[state=active]:border-blue-600 data-[state=active]:bg-transparent data-[state=active]:shadow-none text-[10px] font-bold uppercase tracking-widest p-0 pb-3">Outlines</TabsTrigger>
+            <TabsTrigger value="filters" className="rounded-none border-b-2 border-transparent data-[state=active]:border-blue-600 data-[state=active]:bg-transparent data-[state=active]:shadow-none text-[10px] font-bold uppercase tracking-widest p-0 pb-3">{t('studio.filters')}</TabsTrigger>
+            <TabsTrigger value="shadows" className="rounded-none border-b-2 border-transparent data-[state=active]:border-blue-600 data-[state=active]:bg-transparent data-[state=active]:shadow-none text-[10px] font-bold uppercase tracking-widest p-0 pb-3">{t('studio.shadows')}</TabsTrigger>
+            <TabsTrigger value="outlines" className="rounded-none border-b-2 border-transparent data-[state=active]:border-blue-600 data-[state=active]:bg-transparent data-[state=active]:shadow-none text-[10px] font-bold uppercase tracking-widest p-0 pb-3">{t('studio.outlines')}</TabsTrigger>
           </TabsList>
         </Tabs>
 
         <div className="space-y-6">
           <div className="flex items-center justify-between">
-            <h4 className="text-sm font-bold text-slate-900">Text Shadow</h4>
+            <h4 className="text-sm font-bold text-slate-900">{t('studio.textShadow')}</h4>
             <Button variant="ghost" size="icon" className="w-6 h-6 bg-slate-100 rounded-full text-slate-400">
               <Plus className="w-3 h-3" />
             </Button>
           </div>
 
-          <PropertySlider label="Blur" value={24} unit="px" />
-          <PropertySlider label="Offset Y" value={4} unit="px" />
-          <PropertySlider label="Opacity" value={50} unit="%" />
+          <PropertySlider label={t('studio.blur')} value={24} unit="px" />
+          <PropertySlider label={t('studio.offsetY')} value={4} unit="px" />
+          <PropertySlider label={t('studio.opacity')} value={50} unit="%" />
 
           <div className="space-y-4">
-            <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Color</p>
+            <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">{t('studio.color')}</p>
             <div className="flex flex-wrap items-center gap-3">
               <ColorCircle color="bg-black" active />
               <ColorCircle color="bg-slate-700" />
@@ -174,12 +177,12 @@ function PropertiesContent() {
 
         <div className="pt-8 border-t space-y-4">
           <div className="flex items-center justify-between">
-            <h4 className="text-sm font-bold text-slate-300">Text Outline</h4>
+            <h4 className="text-sm font-bold text-slate-300">{t('studio.textOutline')}</h4>
             <Button variant="ghost" size="icon" className="w-6 h-6 bg-slate-50 rounded-full text-slate-200">
               <Plus className="w-3 h-3" />
             </Button>
           </div>
-          <p className="text-xs italic text-slate-300">Enable outline to adjust settings.</p>
+          <p className="text-xs italic text-slate-300">{t('studio.enableOutline')}</p>
         </div>
       </div>
     </>
