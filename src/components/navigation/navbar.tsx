@@ -38,10 +38,10 @@ export function Navbar() {
   };
 
   const navLinks = [
-    { name: 'LIBRARY', href: '/library' },
     { name: 'BIBLE', href: '/bible' },
     { name: 'PLANS', href: '/plans' },
     { name: 'DEVOTIONS', href: '/devotions' },
+    { name: 'LIBRARY', href: '/library' },
     { name: 'DASHBOARD', href: '/studio', isExternal: true },
   ];
 
