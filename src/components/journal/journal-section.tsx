@@ -49,7 +49,7 @@ export function JournalSection({ dailyVerse }: JournalSectionProps) {
         <div className="flex flex-col md:flex-row gap-8">
           <div className="flex-1 space-y-6">
             <div className="space-y-2">
-              <h2 className="text-3xl font-headline font-bold flex items-center gap-2">
+              <h2 className="text-3xl font-headline font-bold flex items-center gap-2 text-foreground">
                 <BookOpen className="w-8 h-8 text-primary" />
                 Your Journal
               </h2>
@@ -59,7 +59,7 @@ export function JournalSection({ dailyVerse }: JournalSectionProps) {
             <div className="space-y-4">
               <Textarea 
                 placeholder="Write your reflection here..." 
-                className="min-h-[300px] text-lg leading-relaxed resize-none p-6 shadow-sm bg-white"
+                className="min-h-[300px] text-lg leading-relaxed resize-none p-6 shadow-sm bg-card border-border text-foreground"
                 value={entry}
                 onChange={(e) => setEntry(e.target.value)}
               />
@@ -75,9 +75,9 @@ export function JournalSection({ dailyVerse }: JournalSectionProps) {
           </div>
 
           <aside className="w-full md:w-80 space-y-6">
-            <Card className="border-primary/20 shadow-lg bg-primary/5">
+            <Card className="border-border shadow-lg bg-card">
               <CardHeader>
-                <CardTitle className="text-xl flex items-center gap-2">
+                <CardTitle className="text-xl flex items-center gap-2 text-foreground">
                   <Sparkles className="w-5 h-5 text-accent" />
                   AI Guide
                 </CardTitle>
@@ -89,7 +89,7 @@ export function JournalSection({ dailyVerse }: JournalSectionProps) {
                     {prompts.map((prompt, i) => (
                       <div 
                         key={i} 
-                        className="p-3 text-sm bg-white rounded-md border border-primary/10 cursor-pointer hover:border-primary/30 transition-colors"
+                        className="p-3 text-sm bg-background rounded-md border border-border cursor-pointer hover:border-primary/30 transition-colors text-foreground"
                         onClick={() => setEntry(prev => prev + (prev ? '\n\n' : '') + prompt + '\n')}
                       >
                         {prompt}
@@ -107,7 +107,7 @@ export function JournalSection({ dailyVerse }: JournalSectionProps) {
                   </div>
                 ) : (
                   <Button 
-                    className="w-full bg-accent hover:bg-accent/90" 
+                    className="w-full bg-accent hover:bg-accent/90 text-white" 
                     onClick={handleGeneratePrompts}
                     disabled={isLoadingPrompts}
                   >
@@ -124,7 +124,7 @@ export function JournalSection({ dailyVerse }: JournalSectionProps) {
               </CardContent>
             </Card>
 
-            <div className="p-6 bg-white rounded-lg border border-dashed border-muted text-center space-y-2">
+            <div className="p-6 bg-card rounded-lg border border-dashed border-border text-center space-y-2">
               <h4 className="font-bold text-sm text-muted-foreground uppercase tracking-widest">Community</h4>
               <p className="text-xs text-muted-foreground">Coming Soon: Connect with others in the Library.</p>
             </div>

@@ -18,7 +18,7 @@ export default function Home() {
   const heroImage = PlaceHolderImages.find(img => img.id === 'hero-library');
 
   return (
-    <main className="min-h-screen">
+    <main className="min-h-screen bg-background">
       <Navbar />
       
       {/* Hero Section */}
@@ -33,7 +33,7 @@ export default function Home() {
             data-ai-hint={heroImage.imageHint}
           />
         )}
-        <div className="absolute inset-0 bg-primary/40 mix-blend-multiply" />
+        <div className="absolute inset-0 bg-primary/40 dark:bg-black/60 mix-blend-multiply" />
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-background/20 to-background" />
         
         <div className="relative z-10 max-w-4xl mx-auto px-4 text-center text-white space-y-8 animate-in fade-in zoom-in duration-700">
@@ -71,10 +71,10 @@ export default function Home() {
       <JournalSection dailyVerse={DAILY_VERSE} />
 
       {/* Community Placeholder */}
-      <section className="py-24 bg-primary/5">
+      <section className="py-24 bg-primary/5 dark:bg-white/5">
         <div className="max-w-4xl mx-auto px-4 text-center">
-          <div className="bg-white p-12 rounded-3xl border border-primary/10 shadow-xl space-y-6">
-            <h2 className="text-4xl font-headline font-bold">Community Circles</h2>
+          <div className="bg-card p-12 rounded-3xl border border-border shadow-xl space-y-6">
+            <h2 className="text-4xl font-headline font-bold text-card-foreground">Community Circles</h2>
             <p className="text-muted-foreground text-lg">
               Our shared spaces for prayer, discussion, and fellowship are currently being prepared. Join our waitlist to be the first to know when we open our doors.
             </p>
@@ -82,9 +82,9 @@ export default function Home() {
               <input 
                 type="email" 
                 placeholder="Enter your email" 
-                className="flex-1 px-6 py-3 rounded-full border border-primary/20 focus:outline-none focus:ring-2 focus:ring-primary/40"
+                className="flex-1 px-6 py-3 rounded-full border border-input bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary/40"
               />
-              <button className="bg-primary text-white px-8 py-3 rounded-full font-bold whitespace-nowrap">Notify Me</button>
+              <button className="bg-primary text-primary-foreground px-8 py-3 rounded-full font-bold whitespace-nowrap">Notify Me</button>
             </div>
           </div>
         </div>
