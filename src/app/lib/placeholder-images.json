@@ -32,52 +32,40 @@
       "imageHint": "ancient manuscript"
     },
     {
-      "id": "plan-ansiedad",
-      "description": "Calm ocean at dawn.",
-      "imageUrl": "https://picsum.photos/seed/calm-ocean/600/400",
-      "imageHint": "calm ocean"
+      "id": "topic-hope",
+      "description": "Golden sunset over a calm ocean.",
+      "imageUrl": "https://picsum.photos/seed/hope-sunset/400/400",
+      "imageHint": "golden sunset"
     },
     {
-      "id": "plan-depresion",
-      "description": "Light breaking through dark clouds.",
-      "imageUrl": "https://picsum.photos/seed/light-clouds/600/400",
-      "imageHint": "light clouds"
-    },
-    {
-      "id": "plan-miedo",
-      "description": "A lighthouse in the distance.",
-      "imageUrl": "https://picsum.photos/seed/lighthouse/600/400",
-      "imageHint": "lighthouse"
-    },
-    {
-      "id": "plan-duelo",
-      "description": "A quiet meadow in the morning.",
-      "imageUrl": "https://picsum.photos/seed/quiet-meadow/600/400",
-      "imageHint": "quiet meadow"
-    },
-    {
-      "id": "plan-soledad",
-      "description": "A single tree on a golden hill.",
-      "imageUrl": "https://picsum.photos/seed/lonely-tree/600/400",
-      "imageHint": "lonely tree"
-    },
-    {
-      "id": "plan-mountains",
-      "description": "Majestic mountains for the Psalms plan.",
-      "imageUrl": "https://picsum.photos/seed/mountains-plan/600/400",
+      "id": "topic-faith",
+      "description": "Majestic mountain peaks with light clouds.",
+      "imageUrl": "https://picsum.photos/seed/faith-mountains/400/400",
       "imageHint": "majestic mountains"
     },
     {
-      "id": "library-morning",
-      "description": "Morning forest light for gratitude devotional.",
-      "imageUrl": "https://picsum.photos/seed/forest-morning/600/400",
-      "imageHint": "morning forest"
+      "id": "topic-peace",
+      "description": "Gentle ripples on a lake at dawn.",
+      "imageUrl": "https://picsum.photos/seed/peace-lake/400/400",
+      "imageHint": "calm water"
     },
     {
-      "id": "library-wave",
-      "description": "Powerful ocean wave for stillness devotional.",
-      "imageUrl": "https://picsum.photos/seed/ocean-wave/600/400",
-      "imageHint": "ocean wave"
+      "id": "topic-love",
+      "description": "A single red rose in soft focus.",
+      "imageUrl": "https://picsum.photos/seed/love-rose/400/400",
+      "imageHint": "red rose"
+    },
+    {
+      "id": "recommend-peace",
+      "description": "Sun setting behind misty mountains.",
+      "imageUrl": "https://picsum.photos/seed/peace-chaos/600/400",
+      "imageHint": "misty sunset"
+    },
+    {
+      "id": "recommend-faith",
+      "description": "A sun-drenched path through a vibrant forest.",
+      "imageUrl": "https://picsum.photos/seed/walking-faith/600/400",
+      "imageHint": "sunlight forest"
     },
     {
       "id": "psalms-hero",
