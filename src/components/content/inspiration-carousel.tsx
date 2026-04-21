@@ -33,9 +33,9 @@ const inspirationItems = [
 
 export function InspirationCarousel() {
   return (
-    <section className="py-24 bg-slate-50/50 dark:bg-white/5">
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="text-center mb-16 space-y-4">
+    <section className="py-24 bg-slate-50/50 dark:bg-white/5 overflow-hidden">
+      <div className="max-w-7xl mx-auto px-12 md:px-16">
+        <div className="text-center mb-16 space-y-4 px-6">
           <h2 className="text-4xl md:text-5xl font-headline font-bold text-foreground">Moments of Inspiration</h2>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
             A curated gallery of spiritual reflections to guide your journey through beauty and truth.
@@ -47,7 +47,7 @@ export function InspirationCarousel() {
             align: "start",
             loop: true,
           }}
-          className="w-full"
+          className="w-full relative"
         >
           <CarouselContent className="-ml-4 md:-ml-6">
             {inspirationItems.map((item, index) => {
@@ -84,10 +84,8 @@ export function InspirationCarousel() {
               );
             })}
           </CarouselContent>
-          <div className="flex justify-center mt-12 gap-4">
-            <CarouselPrevious className="relative inset-0 translate-x-0 translate-y-0 h-12 w-12 border-slate-200 dark:border-white/10" />
-            <CarouselNext className="relative inset-0 translate-x-0 translate-y-0 h-12 w-12 border-slate-200 dark:border-white/10" />
-          </div>
+          <CarouselPrevious className="-left-6 md:-left-12 h-12 w-12 bg-background/80 backdrop-blur-sm border-slate-200 dark:border-white/10 hover:bg-primary hover:text-white transition-all shadow-lg" />
+          <CarouselNext className="-right-6 md:-right-12 h-12 w-12 bg-background/80 backdrop-blur-sm border-slate-200 dark:border-white/10 hover:bg-primary hover:text-white transition-all shadow-lg" />
         </Carousel>
       </div>
     </section>
