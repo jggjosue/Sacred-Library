@@ -42,7 +42,7 @@ export function Navbar() {
     { name: 'BIBLE', href: '/bible' },
     { name: 'PLANS', href: '/plans' },
     { name: 'DEVOTIONS', href: '/devotions' },
-    { name: 'STUDIO', href: '/studio' },
+    { name: 'PROFILE', href: '/profile' },
   ];
 
   return (
