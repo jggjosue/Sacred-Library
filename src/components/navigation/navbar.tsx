@@ -42,7 +42,7 @@ export function Navbar() {
     { name: 'BIBLE', href: '/bible' },
     { name: 'PLANS', href: '/plans' },
     { name: 'DEVOTIONS', href: '/devotions' },
-    { name: 'DASHBOARD', href: '/studio' },
+    { name: 'DASHBOARD', href: '/studio', isExternal: true },
   ];
 
   return (
@@ -56,7 +56,9 @@ export function Navbar() {
           {navLinks.map((link) => (
             <Link 
               key={link.name}
-              href={link.href} 
+              href={link.href}
+              target={link.isExternal ? "_blank" : undefined}
+              rel={link.isExternal ? "noopener noreferrer" : undefined}
               className={cn(
                 "text-[10px] font-bold tracking-[0.2em] transition-all relative py-2 text-muted-foreground hover:text-primary",
                 pathname === link.href && "text-primary border-b-2 border-primary"
