@@ -3,18 +3,20 @@
 import React from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Heart, Moon, Sun, Menu, Languages, LogIn, UserPlus } from 'lucide-react';
+import { Heart, Moon, Sun, Menu, Languages, LogIn, UserPlus, Search, Store } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
-import { SignInButton, SignUpButton, UserButton, Show } from "@clerk/nextjs";
+import { UserButton, Show } from "@clerk/nextjs";
 import { useI18n } from '@/components/providers/i18n-provider';
 import {
   Sheet,
+  SheetClose,
   SheetContent,
   SheetHeader,
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
+import { GlobalSearchTrigger } from '@/components/navigation/global-search';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -34,23 +36,20 @@ export function Navbar() {
   const pathname = usePathname();
 
   React.useEffect(() => {
-    const savedTheme = localStorage.getItem('theme');
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    
-    if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
-      setIsDark(true);
-      document.documentElement.classList.add('dark');
-    }
+    setIsDark(document.documentElement.classList.contains('dark'));
   }, []);
 
   const toggleTheme = () => {
     const newIsDark = !isDark;
     setIsDark(newIsDark);
+    const root = document.documentElement;
     if (newIsDark) {
-      document.documentElement.classList.add('dark');
+      root.classList.add('dark');
+      root.style.colorScheme = 'dark';
       localStorage.setItem('theme', 'dark');
     } else {
-      document.documentElement.classList.remove('dark');
+      root.classList.remove('dark');
+      root.style.colorScheme = 'light';
       localStorage.setItem('theme', 'light');
     }
   };
@@ -76,6 +75,23 @@ export function Navbar() {
               <SheetHeader>
                 <SheetTitle className="text-left font-headline text-2xl text-primary">Sacred Library</SheetTitle>
               </SheetHeader>
+              <div className="mt-6">
+                <SheetClose asChild>
+                  <Button
+                    type="button"
+                    variant="outline"
+                    className="w-full justify-start gap-2 font-bold text-xs uppercase tracking-widest h-12 rounded-xl border-border"
+                    onClick={() =>
+                      window.dispatchEvent(
+                        new Event('sacred-library:open-search')
+                      )
+                    }
+                  >
+                    <Search className="w-4 h-4" />
+                    {t('nav.search')}
+                  </Button>
+                </SheetClose>
+              </div>
               <nav className="flex flex-col gap-4 mt-8">
                 {publicLinks.map((link) => (
                   <Link 
@@ -115,18 +131,23 @@ export function Navbar() {
 
                 <Show when="signed-out">
                   <div className="flex flex-col gap-2 pt-4">
-                    <SignInButton forceRedirectUrl="/profile">
-                      <Button variant="outline" className="w-full font-bold uppercase tracking-widest text-xs h-12 gap-2">
-                        <LogIn className="w-4 h-4" />
-                        {t('nav.signIn')}
-                      </Button>
-                    </SignInButton>
-                    <SignUpButton forceRedirectUrl="/profile">
-                      <Button className="w-full bg-primary text-white font-bold uppercase tracking-widest text-xs h-12 gap-2">
-                        <UserPlus className="w-4 h-4" />
-                        {t('nav.signUp')}
-                      </Button>
-                    </SignUpButton>
+                    <Button
+                      type="button"
+                      variant="outline"
+                      disabled
+                      className="w-full font-bold uppercase tracking-widest text-xs h-12 gap-2 opacity-50 cursor-not-allowed"
+                    >
+                      <LogIn className="w-4 h-4" />
+                      {t('nav.signIn')}
+                    </Button>
+                    <Button
+                      type="button"
+                      disabled
+                      className="w-full bg-primary/50 text-white font-bold uppercase tracking-widest text-xs h-12 gap-2 cursor-not-allowed"
+                    >
+                      <UserPlus className="w-4 h-4" />
+                      {t('nav.signUp')}
+                    </Button>
                   </div>
                 </Show>
               </nav>
@@ -168,6 +189,17 @@ export function Navbar() {
 
         <div className="flex items-center gap-1 sm:gap-4">
           <div className="flex items-center gap-1">
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <span className="inline-flex">
+                  <GlobalSearchTrigger />
+                </span>
+              </TooltipTrigger>
+              <TooltipContent>
+                <p className="text-[10px] font-bold uppercase tracking-widest">{t('nav.search')}</p>
+              </TooltipContent>
+            </Tooltip>
+
             <Show when="signed-in">
               <Tooltip>
                 <TooltipTrigger asChild>
@@ -228,13 +260,37 @@ export function Navbar() {
               <div className="flex items-center gap-1">
                 <Tooltip>
                   <TooltipTrigger asChild>
-                    <div>
-                      <SignInButton forceRedirectUrl="/profile">
-                        <Button variant="ghost" size="icon" className="text-muted-foreground hover:text-primary rounded-full">
-                          <LogIn className="w-5 h-5" />
-                        </Button>
-                      </SignInButton>
-                    </div>
+                    <Link href="/downloads" className="inline-flex">
+                      <Button
+                        type="button"
+                        variant="ghost"
+                        size="icon"
+                        className="text-muted-foreground hover:text-primary rounded-full"
+                        aria-label={t('nav.store')}
+                      >
+                        <Store className="w-5 h-5" />
+                      </Button>
+                    </Link>
+                  </TooltipTrigger>
+                  <TooltipContent>
+                    <p className="text-[10px] font-bold uppercase tracking-widest">{t('nav.store')}</p>
+                  </TooltipContent>
+                </Tooltip>
+
+                <Tooltip>
+                  <TooltipTrigger asChild>
+                    <span className="inline-flex">
+                      <Button
+                        type="button"
+                        variant="ghost"
+                        size="icon"
+                        disabled
+                        className="text-muted-foreground rounded-full opacity-50 cursor-not-allowed"
+                        aria-label={t('nav.signIn')}
+                      >
+                        <LogIn className="w-5 h-5" />
+                      </Button>
+                    </span>
                   </TooltipTrigger>
                   <TooltipContent>
                     <p className="text-[10px] font-bold uppercase tracking-widest">{t('nav.signIn')}</p>
@@ -243,13 +299,18 @@ export function Navbar() {
 
                 <Tooltip>
                   <TooltipTrigger asChild>
-                    <div>
-                      <SignUpButton forceRedirectUrl="/profile">
-                        <Button variant="ghost" size="icon" className="text-muted-foreground hover:text-primary rounded-full">
-                          <UserPlus className="w-5 h-5" />
-                        </Button>
-                      </SignUpButton>
-                    </div>
+                    <span className="inline-flex">
+                      <Button
+                        type="button"
+                        variant="ghost"
+                        size="icon"
+                        disabled
+                        className="text-muted-foreground rounded-full opacity-50 cursor-not-allowed"
+                        aria-label={t('nav.signUp')}
+                      >
+                        <UserPlus className="w-5 h-5" />
+                      </Button>
+                    </span>
                   </TooltipTrigger>
                   <TooltipContent>
                     <p className="text-[10px] font-bold uppercase tracking-widest">{t('nav.signUp')}</p>

@@ -4,6 +4,7 @@
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { UserButton, Show } from '@clerk/nextjs';
 import { 
   Layout, 
   Monitor, 
@@ -37,7 +38,7 @@ export default function StudioPage() {
   const [isPropertiesOpen, setIsPropertiesOpen] = React.useState(false);
 
   return (
-    <div className="h-screen flex flex-col bg-white overflow-hidden">
+    <div className="h-screen flex flex-col bg-white dark:bg-slate-900 overflow-hidden">
       {/* Top Navigation */}
       <header className="h-16 border-b flex items-center justify-between px-4 sm:px-6 shrink-0">
         <div className="flex items-center gap-2">
@@ -45,36 +46,53 @@ export default function StudioPage() {
         </div>
         
         <div className="flex items-center gap-2 sm:gap-6">
-          <div className="hidden sm:flex items-center gap-4 text-xs font-bold text-slate-400">
+          <div className="hidden sm:flex items-center gap-4 text-xs font-bold text-slate-400 dark:text-slate-500">
             <button className="hover:text-blue-600 transition-colors uppercase tracking-wider">{t('studio.publish')}</button>
             <button className="hover:text-blue-600 transition-colors uppercase tracking-wider">{t('studio.export')}</button>
           </div>
-          <div className="hidden sm:block h-4 w-px bg-slate-100 mx-2" />
+          <div className="hidden sm:block h-4 w-px bg-slate-100 dark:bg-slate-800 mx-2" />
           <div className="flex items-center gap-1 sm:gap-3">
             <Button variant="ghost" size="sm" className="hidden sm:flex text-blue-600 font-bold gap-2 hover:bg-blue-50">
               {t('studio.share')}
             </Button>
-            <Button variant="ghost" size="icon" className="text-slate-400 hover:text-blue-600">
+            <Button variant="ghost" size="icon" className="text-slate-400 dark:text-slate-500 hover:text-blue-600">
               <Cloud className="w-5 h-5" />
             </Button>
             <Button 
               variant="ghost" 
               size="icon" 
-              className="lg:hidden text-slate-400 hover:text-blue-600"
+              className="lg:hidden text-slate-400 dark:text-slate-500 hover:text-blue-600"
               onClick={() => setIsPropertiesOpen(true)}
             >
               <PanelRight className="w-5 h-5" />
             </Button>
-            <div className="w-8 h-8 rounded-full overflow-hidden border">
-              <Image src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=32&h=32&fit=crop" alt="Profile" width={32} height={32} />
-            </div>
+            <Show when="signed-in">
+              <UserButton
+                appearance={{
+                  elements: {
+                    userButtonAvatarBox: "w-8 h-8 border border-border",
+                  },
+                }}
+              />
+            </Show>
+            <Show when="signed-out">
+              <Button
+                type="button"
+                variant="ghost"
+                size="sm"
+                disabled
+                className="text-blue-600/50 font-bold cursor-not-allowed opacity-60"
+              >
+                {t('nav.signIn')}
+              </Button>
+            </Show>
           </div>
         </div>
       </header>
 
       <div className="flex-1 flex overflow-hidden flex-col lg:flex-row">
         {/* Mobile Toolbar (Bottom on Mobile) */}
-        <aside className="lg:w-20 border-t lg:border-t-0 lg:border-r flex flex-row lg:flex-col items-center py-2 lg:py-6 justify-around lg:justify-between shrink-0 bg-white z-10">
+        <aside className="lg:w-20 border-t lg:border-t-0 lg:border-r flex flex-row lg:flex-col items-center py-2 lg:py-6 justify-around lg:justify-between shrink-0 bg-white dark:bg-slate-900 z-10">
           <div className="flex flex-row lg:flex-col gap-4 sm:gap-8 items-center w-full justify-around lg:justify-start">
             <SidebarIcon icon={Layout} label={t('studio.studio')} active badge="Creative Hub" />
             <SidebarIcon icon={Monitor} label={t('studio.canvas')} />
@@ -93,7 +111,7 @@ export default function StudioPage() {
         </aside>
 
         {/* Main Canvas Area */}
-        <main className="flex-1 bg-slate-50 p-4 sm:p-12 flex items-center justify-center relative overflow-auto">
+        <main className="flex-1 bg-slate-50 dark:bg-slate-900 p-4 sm:p-12 flex items-center justify-center relative overflow-auto">
           <div className="relative aspect-video w-full max-w-4xl rounded-[1.5rem] sm:rounded-[3rem] overflow-hidden shadow-[0_40px_100px_rgba(0,0,0,0.15)] group bg-black">
             {faithImage && (
               <Image 
@@ -116,7 +134,7 @@ export default function StudioPage() {
         </main>
 
         {/* Right Properties Panel (Desktop Only) */}
-        <aside className="hidden lg:flex w-80 border-l p-8 flex-col gap-10 shrink-0 bg-white overflow-y-auto">
+        <aside className="hidden lg:flex w-80 border-l p-8 flex-col gap-10 shrink-0 bg-white dark:bg-slate-900 overflow-y-auto">
           <PropertiesContent />
         </aside>
 
@@ -136,8 +154,8 @@ function PropertiesContent() {
   return (
     <>
       <div className="space-y-1 mt-6 lg:mt-0">
-        <h3 className="text-2xl font-headline font-bold text-slate-900">{t('studio.properties')}</h3>
-        <p className="text-sm text-slate-400 font-medium">{t('studio.refine')}</p>
+        <h3 className="text-2xl font-headline font-bold text-slate-900 dark:text-slate-100">{t('studio.properties')}</h3>
+        <p className="text-sm text-slate-400 dark:text-slate-500 font-medium">{t('studio.refine')}</p>
       </div>
 
       <div className="space-y-8 mt-10">
@@ -151,8 +169,8 @@ function PropertiesContent() {
 
         <div className="space-y-6">
           <div className="flex items-center justify-between">
-            <h4 className="text-sm font-bold text-slate-900">{t('studio.textShadow')}</h4>
-            <Button variant="ghost" size="icon" className="w-6 h-6 bg-slate-100 rounded-full text-slate-400">
+            <h4 className="text-sm font-bold text-slate-900 dark:text-slate-100">{t('studio.textShadow')}</h4>
+            <Button variant="ghost" size="icon" className="w-6 h-6 bg-slate-100 dark:bg-slate-800 rounded-full text-slate-400 dark:text-slate-500">
               <Plus className="w-3 h-3" />
             </Button>
           </div>
@@ -162,13 +180,13 @@ function PropertiesContent() {
           <PropertySlider label={t('studio.opacity')} value={50} unit="%" />
 
           <div className="space-y-4">
-            <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">{t('studio.color')}</p>
+            <p className="text-[10px] font-bold text-slate-400 dark:text-slate-500 uppercase tracking-widest">{t('studio.color')}</p>
             <div className="flex flex-wrap items-center gap-3">
               <ColorCircle color="bg-black" active />
-              <ColorCircle color="bg-slate-700" />
+              <ColorCircle color="bg-slate-700 dark:bg-slate-300" />
               <ColorCircle color="bg-blue-800" />
               <ColorCircle color="bg-amber-900" />
-              <div className="w-8 h-8 rounded-full border border-dashed border-slate-300 flex items-center justify-center text-slate-300">
+              <div className="w-8 h-8 rounded-full border border-dashed border-slate-300 dark:border-slate-700 flex items-center justify-center text-slate-300 dark:text-slate-600">
                 <Plus className="w-3 h-3" />
               </div>
             </div>
@@ -177,12 +195,12 @@ function PropertiesContent() {
 
         <div className="pt-8 border-t space-y-4">
           <div className="flex items-center justify-between">
-            <h4 className="text-sm font-bold text-slate-300">{t('studio.textOutline')}</h4>
-            <Button variant="ghost" size="icon" className="w-6 h-6 bg-slate-50 rounded-full text-slate-200">
+            <h4 className="text-sm font-bold text-slate-300 dark:text-slate-600">{t('studio.textOutline')}</h4>
+            <Button variant="ghost" size="icon" className="w-6 h-6 bg-slate-50 dark:bg-slate-900 rounded-full text-slate-200 dark:text-slate-700">
               <Plus className="w-3 h-3" />
             </Button>
           </div>
-          <p className="text-xs italic text-slate-300">{t('studio.enableOutline')}</p>
+          <p className="text-xs italic text-slate-300 dark:text-slate-600">{t('studio.enableOutline')}</p>
         </div>
       </div>
     </>
@@ -194,13 +212,13 @@ function SidebarIcon({ icon: Icon, label, active = false, highlighted = false, s
     <div className="flex flex-col items-center gap-1 group cursor-pointer w-full relative">
       <div className={cn(
         "w-8 h-8 sm:w-10 sm:h-10 rounded-xl flex items-center justify-center transition-all",
-        active ? "bg-slate-100 text-blue-600" : "text-slate-400 group-hover:bg-slate-50 group-hover:text-slate-600",
+        active ? "bg-slate-100 dark:bg-slate-800 text-blue-600" : "text-slate-400 dark:text-slate-500 group-hover:bg-slate-50 group-hover:text-slate-600",
         highlighted && "bg-blue-600 text-white shadow-xl shadow-blue-200"
       )}>
         <Icon className={cn(small ? "w-3 h-3 sm:w-4 sm:h-4" : "w-4 h-4 sm:w-5 sm:h-5")} />
       </div>
-      {!small && <span className={cn("hidden sm:block text-[8px] font-bold uppercase tracking-wider", active ? "text-slate-900" : "text-slate-400")}>{label}</span>}
-      {badge && <span className="hidden lg:block absolute -bottom-4 text-[7px] font-medium text-slate-300 whitespace-nowrap">{badge}</span>}
+      {!small && <span className={cn("hidden sm:block text-[8px] font-bold uppercase tracking-wider", active ? "text-slate-900 dark:text-slate-100" : "text-slate-400 dark:text-slate-500")}>{label}</span>}
+      {badge && <span className="hidden lg:block absolute -bottom-4 text-[7px] font-medium text-slate-300 dark:text-slate-600 whitespace-nowrap">{badge}</span>}
     </div>
   );
 }
@@ -208,9 +226,9 @@ function SidebarIcon({ icon: Icon, label, active = false, highlighted = false, s
 function PropertySlider({ label, value, unit }: { label: string, value: number, unit: string }) {
   return (
     <div className="space-y-3">
-      <div className="flex justify-between items-center text-[10px] font-bold uppercase tracking-widest text-slate-400">
+      <div className="flex justify-between items-center text-[10px] font-bold uppercase tracking-widest text-slate-400 dark:text-slate-500">
         <span>{label}</span>
-        <span className="text-slate-900">{value}{unit}</span>
+        <span className="text-slate-900 dark:text-slate-100">{value}{unit}</span>
       </div>
       <Slider defaultValue={[value]} max={100} step={1} className="w-full" />
     </div>

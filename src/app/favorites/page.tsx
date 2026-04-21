@@ -36,12 +36,12 @@ export default function FavoritesPage() {
   const [activeFilter, setActiveFilter] = React.useState("All");
 
   return (
-    <div className="min-h-screen bg-white pt-24 pb-12">
+    <div className="min-h-screen bg-white dark:bg-slate-900 pt-24 pb-12">
       <Navbar />
       
       <main className="max-w-7xl mx-auto px-6">
         <header className="mb-12 space-y-8">
-          <h1 className="text-5xl md:text-6xl font-headline font-bold text-slate-900">
+          <h1 className="text-5xl md:text-6xl font-headline font-bold text-slate-900 dark:text-slate-100">
             Your Favorites
           </h1>
 
@@ -54,7 +54,7 @@ export default function FavoritesPage() {
                   "px-8 py-3 rounded-full text-sm font-medium transition-all",
                   activeFilter === filter
                     ? "bg-blue-600 text-white shadow-lg shadow-blue-200"
-                    : "bg-slate-50 text-slate-500 hover:bg-slate-100"
+                    : "bg-slate-50 dark:bg-slate-900 text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800"
                 )}
               >
                 {filter}
@@ -67,12 +67,12 @@ export default function FavoritesPage() {
           {favorites.map((fav, idx) => (
             <div key={idx} className="group relative transition-all duration-300 hover:scale-[1.02]">
               {fav.type === 'verse' ? (
-                <div className="bg-white border border-slate-100 rounded-[2.5rem] p-10 h-80 flex flex-col justify-between shadow-xl shadow-slate-100/50">
+                <div className="bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 rounded-[2.5rem] p-10 h-80 flex flex-col justify-between shadow-xl shadow-slate-100/50">
                   <div className="space-y-6">
-                    <p className="text-2xl font-headline italic leading-relaxed text-slate-700">
+                    <p className="text-2xl font-headline italic leading-relaxed text-slate-700 dark:text-slate-300">
                       {fav.content}
                     </p>
-                    <p className="text-xs font-bold tracking-[0.2em] text-slate-400 uppercase">
+                    <p className="text-xs font-bold tracking-[0.2em] text-slate-400 dark:text-slate-500 uppercase">
                       {fav.author}
                     </p>
                   </div>

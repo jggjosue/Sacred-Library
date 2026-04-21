@@ -62,14 +62,14 @@ export default function DownloadsPage() {
   const { t } = useI18n();
 
   return (
-    <div className="min-h-screen bg-slate-50/50">
+    <div className="min-h-screen bg-slate-50/50 dark:bg-slate-900/40">
       <Navbar />
       
       <main className="max-w-7xl mx-auto px-6 pt-32 pb-24">
         <div className="grid lg:grid-cols-12 gap-12">
           {/* Profile Sidebar */}
           <aside className="lg:col-span-4 space-y-8">
-            <Card className="rounded-[2.5rem] border-none shadow-xl bg-white overflow-hidden">
+            <Card className="rounded-[2.5rem] border-none shadow-xl bg-white dark:bg-slate-900 overflow-hidden">
               <div className="h-32 bg-blue-600" />
               <CardContent className="relative pt-0 text-center pb-12">
                 <div className="flex justify-center -mt-16 mb-6">
@@ -78,21 +78,21 @@ export default function DownloadsPage() {
                     <AvatarFallback className="text-2xl font-bold">JD</AvatarFallback>
                   </Avatar>
                 </div>
-                <h2 className="text-3xl font-headline font-bold text-slate-900">John Doe</h2>
-                <p className="text-slate-400 font-medium mb-8">{t('profile.memberSince')} 2024</p>
+                <h2 className="text-3xl font-headline font-bold text-slate-900 dark:text-slate-100">John Doe</h2>
+                <p className="text-slate-400 dark:text-slate-500 font-medium mb-8">{t('profile.memberSince')} 2024</p>
                 
                 <div className="flex flex-col gap-3 px-4">
                   <Button className="w-full rounded-full bg-blue-600 hover:bg-blue-700 h-12 font-bold">
                     {t('profile.editProfile')}
                   </Button>
-                  <Button variant="outline" className="w-full rounded-full border-slate-100 h-12 font-bold text-slate-600">
+                  <Button variant="outline" className="w-full rounded-full border-slate-100 dark:border-slate-800 h-12 font-bold text-slate-600 dark:text-slate-300">
                     {t('profile.signOut')}
                   </Button>
                 </div>
               </CardContent>
             </Card>
 
-            <nav className="bg-white rounded-[2rem] border border-slate-100 overflow-hidden">
+            <nav className="bg-white dark:bg-slate-900 rounded-[2rem] border border-slate-100 dark:border-slate-800 overflow-hidden">
               <ProfileNavLink href="/profile" icon={User} label={t('profile.personalInfo')} active={pathname === '/profile'} />
               <ProfileNavLink href="/downloads" icon={Download} label={t('profile.downloads')} active={pathname === '/downloads'} />
               <ProfileNavLink 
@@ -112,24 +112,24 @@ export default function DownloadsPage() {
           <section className="lg:col-span-8 space-y-12">
             <header className="flex flex-col md:flex-row justify-between items-start md:items-end gap-6">
               <div className="space-y-2">
-                <h1 className="text-5xl font-headline font-bold text-slate-900 tracking-tight">{t('profile.downloads')}</h1>
-                <p className="text-sm font-bold text-slate-400 uppercase tracking-widest">
+                <h1 className="text-5xl font-headline font-bold text-slate-900 dark:text-slate-100 tracking-tight">{t('profile.downloads')}</h1>
+                <p className="text-sm font-bold text-slate-400 dark:text-slate-500 uppercase tracking-widest">
                   {downloads.length} Items • 41.2 MB
                 </p>
               </div>
 
               <div className="flex items-center gap-2">
-                <span className="text-sm font-medium text-slate-400">Sort by:</span>
-                <Button variant="outline" className="rounded-full border-slate-100 bg-white text-slate-900 hover:bg-slate-50 font-medium text-sm h-10 px-5 gap-2">
+                <span className="text-sm font-medium text-slate-400 dark:text-slate-500">Sort by:</span>
+                <Button variant="outline" className="rounded-full border-slate-100 dark:border-slate-800 bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100 hover:bg-slate-50 dark:hover:bg-slate-800 font-medium text-sm h-10 px-5 gap-2">
                   Recent
-                  <ChevronDown className="w-4 h-4 text-slate-400" />
+                  <ChevronDown className="w-4 h-4 text-slate-400 dark:text-slate-500" />
                 </Button>
               </div>
             </header>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               {downloads.map((item) => (
-                <div key={item.id} className="group bg-white rounded-[2rem] p-8 border border-slate-100 shadow-sm transition-all duration-300 hover:shadow-xl hover:shadow-slate-200/50 flex flex-col h-full">
+                <div key={item.id} className="group bg-white dark:bg-slate-900 rounded-[2rem] p-8 border border-slate-100 dark:border-slate-800 shadow-sm transition-all duration-300 hover:shadow-xl hover:shadow-slate-200/50 flex flex-col h-full">
                   <div className="flex gap-6 mb-8">
                     <div className="relative w-20 h-20 shrink-0 rounded-[1.25rem] overflow-hidden">
                       <Image
@@ -141,13 +141,13 @@ export default function DownloadsPage() {
                       />
                     </div>
                     <div className="space-y-1 py-1">
-                      <h3 className="text-lg font-headline font-bold text-slate-900 leading-tight">
+                      <h3 className="text-lg font-headline font-bold text-slate-900 dark:text-slate-100 leading-tight">
                         {item.title}
                       </h3>
-                      <p className="text-xs font-medium text-slate-400">
+                      <p className="text-xs font-medium text-slate-400 dark:text-slate-500">
                         {item.author}
                       </p>
-                      <p className="text-[10px] font-bold tracking-widest text-slate-300 uppercase">
+                      <p className="text-[10px] font-bold tracking-widest text-slate-300 dark:text-slate-600 uppercase">
                         {item.type} • {item.size}
                       </p>
                     </div>
@@ -158,11 +158,11 @@ export default function DownloadsPage() {
                       <div className="space-y-4">
                         <div className="flex justify-between items-center text-[10px] font-bold tracking-widest uppercase">
                           <span className="text-blue-600 animate-pulse">Downloading...</span>
-                          <span className="text-slate-400">{item.progress}%</span>
+                          <span className="text-slate-400 dark:text-slate-500">{item.progress}%</span>
                         </div>
                         <div className="flex items-center gap-4">
-                          <Progress value={item.progress} className="h-2 bg-slate-50 flex-1" />
-                          <button className="w-8 h-8 rounded-full bg-slate-50 flex items-center justify-center text-slate-400 hover:text-red-500 transition-colors">
+                          <Progress value={item.progress} className="h-2 bg-slate-50 dark:bg-slate-900 flex-1" />
+                          <button className="w-8 h-8 rounded-full bg-slate-50 dark:bg-slate-900 flex items-center justify-center text-slate-400 dark:text-slate-500 hover:text-red-500 transition-colors">
                             <X className="w-4 h-4" />
                           </button>
                         </div>
@@ -174,7 +174,7 @@ export default function DownloadsPage() {
                         >
                           <Play className="w-4 h-4 fill-current ml-0.5" />
                         </Button>
-                        <button className="text-slate-300 hover:text-red-500 transition-colors p-2">
+                        <button className="text-slate-300 dark:text-slate-600 hover:text-red-500 transition-colors p-2">
                           <Trash2 className="w-4 h-4" />
                         </button>
                       </div>
@@ -202,7 +202,7 @@ function ProfileNavLink({ icon: Icon, label, href, active = false, target, rel }
       "w-full flex items-center gap-4 px-8 py-5 text-sm font-bold transition-all border-l-4",
       active 
         ? "bg-blue-50 text-blue-600 border-blue-600" 
-        : "text-slate-500 border-transparent hover:bg-slate-50 hover:text-slate-900"
+        : "text-slate-500 dark:text-slate-400 border-transparent hover:bg-slate-50 dark:hover:bg-slate-800 hover:text-slate-900"
     )}>
       <Icon className="w-5 h-5" />
       {label}
