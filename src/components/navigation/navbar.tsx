@@ -4,7 +4,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Heart, Moon, Sun, Menu } from 'lucide-react';
+import { Heart, Moon, Sun, Menu, Languages } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { AuthModal } from '@/components/auth/auth-modal';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
@@ -16,19 +16,31 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
 export function Navbar() {
   const [isAuthOpen, setIsAuthOpen] = React.useState(false);
   const [isDark, setIsDark] = React.useState(false);
+  const [lang, setLang] = React.useState<'en' | 'es'>('en');
   const pathname = usePathname();
 
   React.useEffect(() => {
     const savedTheme = localStorage.getItem('theme');
+    const savedLang = localStorage.getItem('lang') as 'en' | 'es';
     const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
     
     if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
       setIsDark(true);
       document.documentElement.classList.add('dark');
+    }
+
+    if (savedLang) {
+      setLang(savedLang);
     }
   }, []);
 
@@ -44,18 +56,46 @@ export function Navbar() {
     }
   };
 
+  const handleLangChange = (newLang: 'en' | 'es') => {
+    setLang(newLang);
+    localStorage.setItem('lang', newLang);
+  };
+
+  const translations = {
+    en: {
+      bible: 'BIBLE',
+      plans: 'PLANS',
+      devotions: 'DEVOTIONS',
+      library: 'LIBRARY',
+      dashboard: 'DASHBOARD',
+      favorites: 'FAVORITES',
+      language: 'Language',
+    },
+    es: {
+      bible: 'BIBLIA',
+      plans: 'PLANES',
+      devotions: 'DEVOCIONALES',
+      library: 'BIBLIOTECA',
+      dashboard: 'DASHBOARD',
+      favorites: 'FAVORITOS',
+      language: 'Idioma',
+    }
+  };
+
+  const t = translations[lang];
+
   const navLinks = [
-    { name: 'BIBLE', href: '/bible' },
-    { name: 'PLANS', href: '/plans' },
-    { name: 'DEVOTIONS', href: '/devotions' },
-    { name: 'LIBRARY', href: '/library' },
-    { name: 'DASHBOARD', href: '/studio', isExternal: true },
+    { name: t.bible, href: '/bible' },
+    { name: t.plans, href: '/plans' },
+    { name: t.devotions, href: '/devotions' },
+    { name: t.library, href: '/library' },
+    { name: t.dashboard, href: '/studio', isExternal: true },
   ];
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 h-16 sm:h-20 flex items-center justify-between">
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-2 sm:gap-4">
           <Sheet>
             <SheetTrigger asChild>
               <Button variant="ghost" size="icon" className="lg:hidden">
@@ -88,12 +128,28 @@ export function Navbar() {
                     pathname === '/favorites' && "text-primary"
                   )}
                 >
-                  FAVORITES
+                  {t.favorites}
                 </Link>
               </nav>
             </SheetContent>
           </Sheet>
           
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button variant="ghost" size="icon" className="text-muted-foreground hover:text-primary rounded-full">
+                <Languages className="w-5 h-5" />
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="start" className="rounded-xl border-border bg-card">
+              <DropdownMenuItem onClick={() => handleLangChange('en')} className="font-bold text-[10px] tracking-widest uppercase cursor-pointer">
+                English
+              </DropdownMenuItem>
+              <DropdownMenuItem onClick={() => handleLangChange('es')} className="font-bold text-[10px] tracking-widest uppercase cursor-pointer">
+                Español
+              </DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
+
           <Link href="/" className="flex items-center gap-2 group shrink-0">
             <span className="font-headline text-xl sm:text-2xl font-bold tracking-tight text-primary">Sacred Library</span>
           </Link>
