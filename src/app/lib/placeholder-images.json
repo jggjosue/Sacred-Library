@@ -60,6 +60,30 @@
       "description": "Powerful ocean wave for stillness devotional.",
       "imageUrl": "https://picsum.photos/seed/ocean-wave/600/400",
       "imageHint": "ocean wave"
+    },
+    {
+      "id": "psalms-hero",
+      "description": "Sunlight filtering through a dense pine forest.",
+      "imageUrl": "https://picsum.photos/seed/forest-audio/1200/500",
+      "imageHint": "forest sunlight"
+    },
+    {
+      "id": "genesis-card",
+      "description": "A beautiful sunset over misty mountains.",
+      "imageUrl": "https://picsum.photos/seed/genesis/400/300",
+      "imageHint": "misty mountains"
+    },
+    {
+      "id": "proverbs-card",
+      "description": "An open bible lit by a single candle in the dark.",
+      "imageUrl": "https://picsum.photos/seed/proverbs/400/300",
+      "imageHint": "candle bible"
+    },
+    {
+      "id": "john-card",
+      "description": "Calm ocean horizon at sunset.",
+      "imageUrl": "https://picsum.photos/seed/john/400/300",
+      "imageHint": "ocean horizon"
     }
   ]
 }

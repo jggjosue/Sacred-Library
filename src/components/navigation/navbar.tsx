@@ -4,7 +4,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { User, Menu } from 'lucide-react';
+import { User, Menu, Settings } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { AuthModal } from '@/components/auth/auth-modal';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
@@ -15,10 +15,10 @@ export function Navbar() {
   const pathname = usePathname();
 
   const navLinks = [
-    { name: 'Sanctum', href: '/' },
-    { name: 'Devotion', href: '/devotions' },
+    { name: 'Home', href: '/' },
     { name: 'Library', href: '/library' },
-    { name: 'Downloads', href: '/downloads' },
+    { name: 'Meditate', href: '/devotions' },
+    { name: 'Community', href: '#' },
   ];
 
   return (
@@ -45,19 +45,23 @@ export function Navbar() {
           </nav>
         </div>
 
-        <div className="flex items-center gap-6">
+        <div className="flex items-center gap-4">
+          <Button variant="ghost" size="icon" className="text-slate-400 hover:text-blue-600">
+            <Settings className="w-5 h-5" />
+          </Button>
+
           <Button 
             onClick={() => setIsAuthOpen(true)}
             variant="ghost" 
             className="p-0 hover:bg-transparent"
           >
-            <Avatar className="w-10 h-10 border border-slate-100 shadow-sm">
+            <Avatar className="w-8 h-8 border border-slate-100 shadow-sm">
               <AvatarImage src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80&w=100&h=100" />
               <AvatarFallback><User /></AvatarFallback>
             </Avatar>
           </Button>
 
-          <Button variant="ghost" size="icon" className="md:hidden">
+          <Button variant="ghost" size="icon" className="md:hidden text-slate-400">
             <Menu className="w-5 h-5" />
           </Button>
         </div>
