@@ -48,6 +48,18 @@
       "description": "Sunlight through forest trees for the Proverbs plan.",
       "imageUrl": "https://picsum.photos/seed/forest-sun/600/400",
       "imageHint": "forest sunlight"
+    },
+    {
+      "id": "library-morning",
+      "description": "Morning forest light for gratitude devotional.",
+      "imageUrl": "https://picsum.photos/seed/forest-morning/600/400",
+      "imageHint": "morning forest"
+    },
+    {
+      "id": "library-wave",
+      "description": "Powerful ocean wave for stillness devotional.",
+      "imageUrl": "https://picsum.photos/seed/ocean-wave/600/400",
+      "imageHint": "ocean wave"
     }
   ]
 }
