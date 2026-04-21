@@ -2,8 +2,11 @@
 "use client";
 
 import Link from 'next/link';
+import { useI18n } from '@/components/providers/i18n-provider';
 
 export function Footer() {
+  const { t } = useI18n();
+
   return (
     <footer className="bg-slate-50/50 py-16 px-6 border-t border-slate-100">
       <div className="max-w-7xl mx-auto">
@@ -15,14 +18,14 @@ export function Footer() {
           </div>
 
           <nav className="flex flex-wrap justify-center gap-8 text-[11px] font-medium text-slate-400">
-            <Link href="#" className="hover:text-blue-600 transition-colors">Privacy</Link>
-            <Link href="#" className="hover:text-blue-600 transition-colors">Terms</Link>
-            <Link href="#" className="hover:text-blue-600 transition-colors">Editorial Policy</Link>
-            <Link href="#" className="hover:text-blue-600 transition-colors">Support</Link>
+            <Link href="#" className="hover:text-blue-600 transition-colors">{t('footer.privacy')}</Link>
+            <Link href="#" className="hover:text-blue-600 transition-colors">{t('footer.terms')}</Link>
+            <Link href="#" className="hover:text-blue-600 transition-colors">{t('footer.policy')}</Link>
+            <Link href="#" className="hover:text-blue-600 transition-colors">{t('footer.support')}</Link>
           </nav>
           
           <div className="text-[11px] font-medium text-slate-400">
-            © 2024 Sacred Library. A space for quiet reflection.
+            {t('footer.copy')}
           </div>
         </div>
       </div>

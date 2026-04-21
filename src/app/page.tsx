@@ -12,11 +12,11 @@ import { DiscoverPath } from '@/components/content/discover-path';
 import { InspirationCarousel } from '@/components/content/inspiration-carousel';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { Quote } from 'lucide-react';
-
-const DAILY_VERSE = "Be still, and know that I am God. (Psalm 46:10)";
+import { useI18n } from '@/components/providers/i18n-provider';
 
 export default function Home() {
   const heroImage = PlaceHolderImages.find(img => img.id === 'hero-library');
+  const { t } = useI18n();
 
   return (
     <main className="min-h-screen bg-background">
@@ -40,18 +40,18 @@ export default function Home() {
         <div className="relative z-10 max-w-4xl mx-auto px-6 pt-32 pb-32 text-center text-white space-y-12 animate-in fade-in zoom-in duration-700">
           <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md px-4 py-2 rounded-full border border-white/20">
             <span className="w-2 h-2 bg-accent rounded-full animate-pulse" />
-            <span className="text-sm font-medium tracking-wide uppercase">Daily Wisdom</span>
+            <span className="text-sm font-medium tracking-wide uppercase">{t('hero.dailyWisdom')}</span>
           </div>
           
           <div className="space-y-6">
             <Quote className="w-10 h-10 mx-auto text-accent/80 opacity-60" />
             <h1 className="text-4xl md:text-6xl lg:text-7xl font-headline font-bold leading-tight drop-shadow-2xl px-4">
-              {DAILY_VERSE}
+              {t('hero.verse')}
             </h1>
           </div>
           
           <p className="text-lg md:text-2xl font-light text-white/90 max-w-2xl mx-auto leading-relaxed">
-            Step into the quiet halls of infinite wisdom. Explore, reflect, and grow in your spiritual journey.
+            {t('hero.description')}
           </p>
           
           <div className="pt-12">
@@ -59,7 +59,7 @@ export default function Home() {
               href="#explore" 
               className="bg-accent text-white px-10 py-4 md:px-12 md:py-5 rounded-full font-bold text-lg hover:bg-accent/90 transition-all hover:scale-105 inline-block shadow-2xl shadow-accent/40 ring-4 ring-white/10"
             >
-              Start Exploring
+              {t('hero.cta')}
             </a>
           </div>
         </div>
@@ -72,24 +72,24 @@ export default function Home() {
       <InspirationCarousel />
 
       {/* Journaling Section */}
-      <JournalSection dailyVerse={DAILY_VERSE} />
+      <JournalSection dailyVerse={t('hero.verse')} />
 
       {/* Community Placeholder */}
       <section className="py-24 bg-primary/5 dark:bg-white/5">
         <div className="max-w-4xl mx-auto px-4 text-center">
           <div className="bg-card p-12 rounded-[3rem] border border-border shadow-xl space-y-6">
-            <h2 className="text-4xl font-headline font-bold text-card-foreground">Community Circles</h2>
+            <h2 className="text-4xl font-headline font-bold text-card-foreground">{t('community.title')}</h2>
             <p className="text-muted-foreground text-lg">
-              Our shared spaces for prayer, discussion, and fellowship are currently being prepared. Join our waitlist to be the first to know when we open our doors.
+              {t('community.description')}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
               <input 
                 type="email" 
-                placeholder="Enter your email" 
+                placeholder={t('community.placeholder')} 
                 className="flex-1 px-6 py-4 rounded-full border border-input bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary/40"
               />
               <button className="bg-primary text-primary-foreground px-10 py-4 rounded-full font-bold whitespace-nowrap shadow-lg hover:bg-primary/90 transition-colors">
-                Notify Me
+                {t('community.notify')}
               </button>
             </div>
           </div>

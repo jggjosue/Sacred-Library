@@ -4,25 +4,27 @@
 import React from 'react';
 import { TrendingUp, Heart, GraduationCap, Users, HeartHandshake, Music } from 'lucide-react';
 import { cn } from '@/lib/utils';
-
-const interests = [
-  { id: 'growth', label: 'Spiritual Growth', icon: TrendingUp },
-  { id: 'encouragement', label: 'Daily Encouragement', icon: Heart },
-  { id: 'bible', label: 'Bible Study', icon: GraduationCap },
-  { id: 'community', label: 'Community', icon: Users },
-  { id: 'service', label: 'Service & Missions', icon: HeartHandshake },
-  { id: 'worship', label: 'Worship', icon: Music },
-];
+import { useI18n } from '@/components/providers/i18n-provider';
 
 export function InterestsPicker() {
   const [selected, setSelected] = React.useState('encouragement');
+  const { t } = useI18n();
+
+  const interests = [
+    { id: 'growth', label: t('personalization.growth'), icon: TrendingUp },
+    { id: 'encouragement', label: t('personalization.encouragement'), icon: Heart },
+    { id: 'bible', label: t('personalization.bible'), icon: GraduationCap },
+    { id: 'community', label: t('personalization.community'), icon: Users },
+    { id: 'service', label: t('personalization.service'), icon: HeartHandshake },
+    { id: 'worship', label: t('personalization.worship'), icon: Music },
+  ];
 
   return (
     <section className="py-24 bg-background">
       <div className="max-w-7xl mx-auto px-4 text-center">
-        <h2 className="text-4xl md:text-5xl font-headline font-bold mb-4 text-foreground">Personalize Your Experience</h2>
+        <h2 className="text-4xl md:text-5xl font-headline font-bold mb-4 text-foreground">{t('personalization.title')}</h2>
         <p className="text-muted-foreground text-lg mb-12 max-w-2xl mx-auto">
-          Select your interests to help us recommend the best content for you.
+          {t('personalization.description')}
         </p>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto">

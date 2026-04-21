@@ -8,6 +8,7 @@ import { Heart, Moon, Sun, Menu, Languages, LogIn, UserPlus } from 'lucide-react
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import { SignInButton, SignUpButton, UserButton, Show } from "@clerk/nextjs";
+import { useI18n } from '@/components/providers/i18n-provider';
 import {
   Sheet,
   SheetContent,
@@ -29,21 +30,16 @@ import {
 
 export function Navbar() {
   const [isDark, setIsDark] = React.useState(false);
-  const [lang, setLang] = React.useState<'en' | 'es'>('en');
+  const { lang, setLang, t } = useI18n();
   const pathname = usePathname();
 
   React.useEffect(() => {
     const savedTheme = localStorage.getItem('theme');
-    const savedLang = localStorage.getItem('lang') as 'en' | 'es';
     const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
     
     if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
       setIsDark(true);
       document.documentElement.classList.add('dark');
-    }
-
-    if (savedLang) {
-      setLang(savedLang);
     }
   }, []);
 
@@ -59,45 +55,11 @@ export function Navbar() {
     }
   };
 
-  const handleLangChange = (newLang: 'en' | 'es') => {
-    setLang(newLang);
-    localStorage.setItem('lang', newLang);
-  };
-
-  const translations = {
-    en: {
-      bible: 'BIBLE',
-      plans: 'PLANS',
-      devotions: 'DEVOTIONS',
-      library: 'LIBRARY',
-      dashboard: 'DASHBOARD',
-      favorites: 'FAVORITES',
-      language: 'Language',
-      signIn: 'Sign In',
-      signUp: 'Sign Up',
-      theme: 'Toggle Theme',
-    },
-    es: {
-      bible: 'BIBLIA',
-      plans: 'PLANES',
-      devocionales: 'DEVOCIONALES',
-      library: 'BIBLIOTECA',
-      dashboard: 'DASHBOARD',
-      favorites: 'FAVORITOS',
-      language: 'Idioma',
-      signIn: 'Iniciar Sesión',
-      signUp: 'Registrarse',
-      theme: 'Cambiar Tema',
-    }
-  };
-
-  const t = translations[lang];
-
   const publicLinks = [
-    { name: t.bible, href: '/bible' },
-    { name: t.plans, href: '/plans' },
-    { name: lang === 'es' ? t.devocionales : t.devotions, href: '/devotions' },
-    { name: t.library, href: '/library' },
+    { name: t('nav.bible'), href: '/bible' },
+    { name: t('nav.plans'), href: '/plans' },
+    { name: t('nav.devotions'), href: '/devotions' },
+    { name: t('nav.library'), href: '/library' },
   ];
 
   return (
@@ -138,7 +100,7 @@ export function Navbar() {
                       pathname === '/studio' && "text-primary"
                     )}
                   >
-                    {t.dashboard}
+                    {t('nav.dashboard')}
                   </Link>
                   <Link 
                     href="/favorites"
@@ -147,7 +109,7 @@ export function Navbar() {
                       pathname === '/favorites' && "text-primary"
                     )}
                   >
-                    {t.favorites}
+                    {t('nav.favorites')}
                   </Link>
                 </Show>
 
@@ -156,13 +118,13 @@ export function Navbar() {
                     <SignInButton mode="modal">
                       <Button variant="outline" className="w-full font-bold uppercase tracking-widest text-xs h-12 gap-2">
                         <LogIn className="w-4 h-4" />
-                        {t.signIn}
+                        {t('nav.signIn')}
                       </Button>
                     </SignInButton>
                     <SignUpButton mode="modal">
                       <Button className="w-full bg-primary text-white font-bold uppercase tracking-widest text-xs h-12 gap-2">
                         <UserPlus className="w-4 h-4" />
-                        {t.signUp}
+                        {t('nav.signUp')}
                       </Button>
                     </SignUpButton>
                   </div>
@@ -199,7 +161,7 @@ export function Navbar() {
                 pathname === '/studio' && "text-primary border-b-2 border-primary"
               )}
             >
-              {t.dashboard}
+              {t('nav.dashboard')}
             </Link>
           </Show>
         </nav>
@@ -216,7 +178,7 @@ export function Navbar() {
                   </Link>
                 </TooltipTrigger>
                 <TooltipContent>
-                  <p className="text-[10px] font-bold uppercase tracking-widest">{t.favorites}</p>
+                  <p className="text-[10px] font-bold uppercase tracking-widest">{t('nav.favorites')}</p>
                 </TooltipContent>
               </Tooltip>
             </Show>
@@ -230,17 +192,17 @@ export function Navbar() {
                     </Button>
                   </DropdownMenuTrigger>
                   <DropdownMenuContent align="end" className="rounded-xl border-border bg-card">
-                    <DropdownMenuItem onClick={() => handleLangChange('en')} className="font-bold text-[10px] tracking-widest uppercase cursor-pointer">
+                    <DropdownMenuItem onClick={() => setLang('en')} className="font-bold text-[10px] tracking-widest uppercase cursor-pointer">
                       English
                     </DropdownMenuItem>
-                    <DropdownMenuItem onClick={() => handleLangChange('es')} className="font-bold text-[10px] tracking-widest uppercase cursor-pointer">
+                    <DropdownMenuItem onClick={() => setLang('es')} className="font-bold text-[10px] tracking-widest uppercase cursor-pointer">
                       Español
                     </DropdownMenuItem>
                   </DropdownMenuContent>
                 </DropdownMenu>
               </TooltipTrigger>
               <TooltipContent>
-                <p className="text-[10px] font-bold uppercase tracking-widest">{t.language}</p>
+                <p className="text-[10px] font-bold uppercase tracking-widest">{t('nav.language')}</p>
               </TooltipContent>
             </Tooltip>
 
@@ -256,7 +218,7 @@ export function Navbar() {
                 </Button>
               </TooltipTrigger>
               <TooltipContent>
-                <p className="text-[10px] font-bold uppercase tracking-widest">{t.theme}</p>
+                <p className="text-[10px] font-bold uppercase tracking-widest">{t('nav.theme')}</p>
               </TooltipContent>
             </Tooltip>
           </div>
@@ -275,7 +237,7 @@ export function Navbar() {
                     </div>
                   </TooltipTrigger>
                   <TooltipContent>
-                    <p className="text-[10px] font-bold uppercase tracking-widest">{t.signIn}</p>
+                    <p className="text-[10px] font-bold uppercase tracking-widest">{t('nav.signIn')}</p>
                   </TooltipContent>
                 </Tooltip>
 
@@ -290,7 +252,7 @@ export function Navbar() {
                     </div>
                   </TooltipTrigger>
                   <TooltipContent>
-                    <p className="text-[10px] font-bold uppercase tracking-widest">{t.signUp}</p>
+                    <p className="text-[10px] font-bold uppercase tracking-widest">{t('nav.signUp')}</p>
                   </TooltipContent>
                 </Tooltip>
               </div>

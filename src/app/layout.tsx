@@ -4,6 +4,7 @@ import './globals.css';
 import {Toaster} from '@/components/ui/toaster';
 import { ClerkProvider } from "@clerk/nextjs";
 import { TooltipProvider } from "@/components/ui/tooltip";
+import { I18nProvider } from "@/components/providers/i18n-provider";
 
 export const metadata: Metadata = {
   title: 'Sacred Library | Divine Wisdom & Reflection',
@@ -24,10 +25,12 @@ export default function RootLayout({
       </head>
       <body className="font-body antialiased selection:bg-blue-600/20" suppressHydrationWarning>
         <ClerkProvider>
-          <TooltipProvider>
-            {children}
-            <Toaster />
-          </TooltipProvider>
+          <I18nProvider>
+            <TooltipProvider>
+              {children}
+              <Toaster />
+            </TooltipProvider>
+          </I18nProvider>
         </ClerkProvider>
       </body>
     </html>

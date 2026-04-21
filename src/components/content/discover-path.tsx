@@ -4,27 +4,30 @@
 import React from 'react';
 import { Sparkles, BookOpen } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
-
-const paths = [
-  {
-    title: 'Verse of the Day',
-    description: 'Start your day with inspiration. A carefully selected passage to guide your morning thoughts.',
-    icon: Sparkles,
-  },
-  {
-    title: 'Reading Plans',
-    description: 'Follow structured paths through Scripture. Tailored reading guides for deeper understanding.',
-    icon: BookOpen,
-  },
-];
+import { useI18n } from '@/components/providers/i18n-provider';
 
 export function DiscoverPath() {
+  const { t } = useI18n();
+
+  const paths = [
+    {
+      title: t('discover.verseTitle'),
+      description: t('discover.verseDesc'),
+      icon: Sparkles,
+    },
+    {
+      title: t('discover.plansTitle'),
+      description: t('discover.plansDesc'),
+      icon: BookOpen,
+    },
+  ];
+
   return (
     <section className="py-24 bg-muted/10">
       <div className="max-w-7xl mx-auto px-4 text-center">
-        <h2 className="text-5xl md:text-6xl font-headline font-bold mb-6 text-foreground">Discover Your Path</h2>
+        <h2 className="text-5xl md:text-6xl font-headline font-bold mb-6 text-foreground">{t('discover.title')}</h2>
         <p className="text-muted-foreground text-xl max-w-3xl mx-auto mb-16 leading-relaxed">
-          Your sanctuary for reflection. Begin a journey of structured growth, daily inspiration, and thoughtful devotion.
+          {t('discover.description')}
         </p>
 
         <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
