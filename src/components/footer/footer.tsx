@@ -1,3 +1,4 @@
+
 "use client";
 
 import Link from 'next/link';
@@ -8,7 +9,7 @@ export function Footer() {
       <div className="max-w-7xl mx-auto">
         <div className="flex flex-col md:flex-row justify-between items-center gap-8">
           <div className="flex flex-col items-center md:items-start gap-4">
-            <h2 className="font-headline text-2xl font-bold italic text-blue-600">
+            <h2 className="font-headline text-2xl font-bold text-blue-600">
               Sacred Library
             </h2>
           </div>
