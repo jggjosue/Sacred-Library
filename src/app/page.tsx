@@ -8,6 +8,7 @@ import { ContentBrowser } from '@/components/content/content-browser';
 import { JournalSection } from '@/components/journal/journal-section';
 import { Footer } from '@/components/footer/footer';
 import { InterestsPicker } from '@/components/personalization/interests-picker';
+import { DiscoverPath } from '@/components/content/discover-path';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { Quote } from 'lucide-react';
 
@@ -89,6 +90,9 @@ export default function Home() {
 
       {/* Personalization Section */}
       <InterestsPicker />
+
+      {/* Discover Path Section */}
+      <DiscoverPath />
 
       <Footer />
     </main>
