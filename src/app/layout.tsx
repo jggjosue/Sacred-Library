@@ -268,6 +268,8 @@ export const metadata: Metadata = {
     "children of god cult",
     "god is",
     "city of god",
+    "biblioteca sagrada",
+    "biblioteca sagrado"
   ],
 };
 
