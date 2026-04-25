@@ -3,7 +3,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Heart, Moon, Sun, Menu, Languages, LogIn, UserPlus, Search } from 'lucide-react';
+import { Heart, Moon, Sun, Menu, Languages, LogIn, UserPlus, Search, Store } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import { UserButton, Show } from "@clerk/nextjs";
@@ -251,6 +251,30 @@ export function Navbar() {
               </TooltipTrigger>
               <TooltipContent>
                 <p className="text-[10px] font-bold uppercase tracking-widest">{t('nav.theme')}</p>
+              </TooltipContent>
+            </Tooltip>
+
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <Link
+                  href="/shop"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex"
+                >
+                  <Button
+                    type="button"
+                    variant="ghost"
+                    size="icon"
+                    className="text-muted-foreground hover:text-primary rounded-full"
+                    aria-label={t('nav.store')}
+                  >
+                    <Store className="w-5 h-5" />
+                  </Button>
+                </Link>
+              </TooltipTrigger>
+              <TooltipContent>
+                <p className="text-[10px] font-bold uppercase tracking-widest">{t('nav.store')}</p>
               </TooltipContent>
             </Tooltip>
 
